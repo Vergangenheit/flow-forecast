@@ -11,3 +11,5 @@ data
 mypy
 .mypy_cache
 *.png
+venv
+env
