@@ -1,27 +1,30 @@
 # flake8: noqa
 import argparse
-from typing import Dict
+from typing import Dict, Union, Tuple
 import json
 import plotly.graph_objects as go
 import wandb
 import pandas as pd
+from pandas import DataFrame, Series
 from flood_forecast.pytorch_training import train_transformer_style
+from flood_forecast.da_rnn.custom_types import DaRnnNet
 from flood_forecast.time_model import PyTorchForecast
 from flood_forecast.evaluator import evaluate_model
 from flood_forecast.time_model import scaling_function
 from flood_forecast.plot_functions import (
     plot_df_test_with_confidence_interval,
     plot_df_test_with_probabilistic_confidence_interval)
+from plotly.graph_objects import Figure
 
 
-def train_function(model_type: str, params: Dict):
+def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRnnNet]:
     """Function to train a Model(TimeSeriesModel) or da_rnn. Will return the trained model
     :param model_type: Type of the model. In almost all cases this will be 'PyTorch'
     :type model_type: str
     :param params: Dictionary containing all the parameters needed to run the model
     :type Dict:
     """
-    dataset_params = params["dataset_params"]
+    dataset_params: Dict = params["dataset_params"]
     if model_type == "da_rnn":
         from flood_forecast.da_rnn.train_da import da_rnn, train
         from flood_forecast.preprocessing.preprocess_da_rnn import make_data
@@ -31,7 +34,7 @@ def train_function(model_type: str, params: Dict):
             params["dataset_params"]["forecast_length"])
         config, model = da_rnn(preprocessed_data, len(dataset_params["target_col"]))
         # All train functions return trained_model
-        trained_model = train(model, preprocessed_data, config)
+        trained_model: DaRnnNet = train(model, preprocessed_data, config)
     elif model_type == "PyTorch":
         dataset_params["batch_size"] = params["training_params"]["batch_size"]
         trained_model = PyTorchForecast(
@@ -40,7 +43,7 @@ def train_function(model_type: str, params: Dict):
             dataset_params["validation_path"],
             dataset_params["test_path"],
             params)
-        takes_target = False
+        takes_target: bool = False
         if "takes_target" in trained_model.params:
             takes_target = trained_model.params["takes_target"]
         if "dataset_params" not in trained_model.params["inference_params"]:
@@ -69,7 +72,7 @@ def train_function(model_type: str, params: Dict):
                 params["inference_params"]["dataset_params"]["scaling"] = scaling_function({},
                                                                                            dataset_params)["scaling"]
             params["inference_params"]["dataset_params"].pop('scaler_params', None)
-        test_acc = evaluate_model(
+        test_acc: Tuple = evaluate_model(
             trained_model,
             model_type,
             params["dataset_params"]["target_col"],
@@ -77,29 +80,29 @@ def train_function(model_type: str, params: Dict):
             params["inference_params"],
             {})
         wandb.run.summary["test_accuracy"] = test_acc[0]
-        df_train_and_test = test_acc[1]
-        forecast_start_idx = test_acc[2]
-        df_prediction_samples = test_acc[3]
-        mae = (df_train_and_test.loc[forecast_start_idx:, "preds"] -
+        df_train_and_test: DataFrame = test_acc[1]
+        forecast_start_idx: int = test_acc[2]
+        df_prediction_samples: DataFrame = test_acc[3]
+        mae: Series = (df_train_and_test.loc[forecast_start_idx:, "preds"] -
                df_train_and_test.loc[forecast_start_idx:, params["dataset_params"]["target_col"][0]]).abs()
-        inverse_mae = 1 / mae
+        inverse_mae: Series = 1 / mae
         i = 0
         for df in df_prediction_samples:
-            pred_std = df.std(axis=1)
-            average_prediction_sharpe = (inverse_mae / pred_std).mean()
+            pred_std: Series = df.std(axis=1)
+            average_prediction_sharpe: float = (inverse_mae / pred_std).mean()
             wandb.log({'average_prediction_sharpe' + str(i): average_prediction_sharpe})
             i += 1
         df_train_and_test.to_csv("temp_preds.csv")
         # Log plots now
         if "probabilistic" in params["inference_params"]:
-            test_plot = plot_df_test_with_probabilistic_confidence_interval(
+            test_plot: Figure = plot_df_test_with_probabilistic_confidence_interval(
                 df_train_and_test,
                 forecast_start_idx,
                 params,)
         elif len(df_prediction_samples) > 0:
             for thing in zip(df_prediction_samples, params["dataset_params"]["target_col"]):
                 thing[0].to_csv(thing[1] + ".csv")
-                test_plot = plot_df_test_with_confidence_interval(
+                test_plot: Figure = plot_df_test_with_confidence_interval(
                     df_train_and_test,
                     thing[0],
                     forecast_start_idx,

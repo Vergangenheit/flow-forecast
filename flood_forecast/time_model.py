@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Dict
+from typing import Dict, Union
 import torch
 import json
 import os
@@ -42,7 +42,7 @@ class TimeSeriesModel(ABC):
             self.gcs_client = get_storage_client()
         else:
             self.gcs_client = None
-        self.wandb = self.wandb_init()
+        self.wandb: bool = self.wandb_init()
         self.crit = make_criterion_functions(params["metrics"])
 
     @abstractmethod
@@ -103,9 +103,9 @@ class PyTorchForecast(TimeSeriesModel):
     def __init__(
             self,
             model_base: str,
-            training_data,
-            validation_data,
-            test_data,
+            training_data: str,
+            validation_data: str,
+            test_data: str,
             params_dict: Dict):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         super().__init__(model_base, training_data, validation_data, test_data, params_dict)
@@ -166,7 +166,7 @@ class PyTorchForecast(TimeSeriesModel):
             data_path: str,
             dataset_params: Dict,
             loader_type: str,
-            the_class="default"):
+            the_class="default") -> Union[CSVDataLoader, AEDataloader, TemporalLoader]:
         start_end_params = {}
         the_class = dataset_params["class"]
         start_end_params = scaling_function(start_end_params, dataset_params)
@@ -229,7 +229,7 @@ class PyTorchForecast(TimeSeriesModel):
         return loader
 
 
-def scaling_function(start_end_params, dataset_params):
+def scaling_function(start_end_params: Dict, dataset_params: Dict) -> Dict:
     in_dataset_params = False
     if "scaler" in dataset_params:
         in_dataset_params = "scaler"

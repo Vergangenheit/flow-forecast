@@ -1,0 +1,83 @@
+2021-05-18 16:31:16,878 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting env: {}
+2021-05-18 16:31:16,879 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-05-18 16:31:16,879 ERROR   MainThread:16860 [wandb_setup.py:_flush():69] error
+Traceback (most recent call last):
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_init.py", line 741, in init
+    wi.setup(kwargs)
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_init.py", line 155, in setup
+    wandb_login._login(anonymous=anonymous, force=force, _disable_warning=True)
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_login.py", line 216, in _login
+    wlogin.prompt_api_key()
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_login.py", line 144, in prompt_api_key
+    no_create=self._settings.force,
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\lib\apikey.py", line 138, in prompt_api_key
+    write_key(settings, key, api=api)
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\lib\apikey.py", line 223, in write_key
+    raise ValueError("API key must be 40 characters long, yours was %s" % len(key))
+ValueError: API key must be 40 characters long, yours was 31
+2021-05-18 16:31:16,882 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-05-18 16:31:16,882 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting login settings: {'api_key': 'e7db10531d60917492a41a48d803cf9aff2ee52f'}
+2021-05-18 16:31:16,883 INFO    MainThread:16860 [wandb_init.py:_log_setup():336] Logging user logs to C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210518_163116-27ntobae\logs\debug.log
+2021-05-18 16:31:16,883 INFO    MainThread:16860 [wandb_init.py:_log_setup():337] Logging internal logs to C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210518_163116-27ntobae\logs\debug-internal.log
+2021-05-18 16:31:16,884 INFO    MainThread:16860 [wandb_init.py:_jupyter_setup():287] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x000001D99120B788>
+2021-05-18 16:31:16,884 INFO    MainThread:16860 [wandb_init.py:init():369] calling init triggers
+2021-05-18 16:31:16,885 INFO    MainThread:16860 [wandb_init.py:init():376] wandb.init called with sweep_config: {}
+config: {}
+2021-05-18 16:31:16,885 INFO    MainThread:16860 [wandb_init.py:init():418] starting backend
+2021-05-18 16:31:16,885 INFO    MainThread:16860 [backend.py:_multiprocessing_setup():71] multiprocessing start_methods=spawn, using: spawn
+2021-05-18 16:31:16,892 INFO    MainThread:16860 [backend.py:ensure_launched():123] starting backend process...
+2021-05-18 16:31:16,993 INFO    MainThread:16860 [backend.py:ensure_launched():128] started backend process with pid: 7972
+2021-05-18 16:31:16,993 INFO    MainThread:16860 [wandb_init.py:init():423] backend started and connected
+2021-05-18 16:31:16,995 INFO    MainThread:16860 [wandb_init.py:init():465] updated telemetry
+2021-05-18 16:31:16,996 INFO    MainThread:16860 [wandb_init.py:init():484] communicating current version
+2021-05-18 16:31:18,242 INFO    MainThread:16860 [wandb_init.py:init():489] got version response upgrade_message: "wandb version 0.10.30 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2021-05-18 16:31:18,242 INFO    MainThread:16860 [wandb_init.py:init():497] communicating run to backend with 30 second timeout
+2021-05-18 16:31:18,712 INFO    MainThread:16860 [wandb_init.py:init():522] starting run threads in backend
+2021-05-18 16:31:18,906 INFO    MainThread:16860 [wandb_run.py:_console_start():1524] atexit reg
+2021-05-18 16:31:18,907 INFO    MainThread:16860 [wandb_run.py:_redirect():1371] redirect: SettingsConsole.WRAP
+2021-05-18 16:31:18,907 INFO    MainThread:16860 [wandb_run.py:_redirect():1414] Wrapping output streams.
+2021-05-18 16:31:18,907 INFO    MainThread:16860 [wandb_run.py:_redirect():1438] Redirects installed.
+2021-05-18 16:31:18,907 INFO    MainThread:16860 [wandb_init.py:init():546] run started, returning control to user process
+2021-05-18 16:31:18,907 INFO    MainThread:16860 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-18 16:31:18,907 INFO    MainThread:16860 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-18 16:31:22,598 INFO    MainThread:16860 [wandb_init.py:_resume_backend():258] resuming backend
+2021-05-18 16:31:23,765 INFO    MainThread:16860 [wandb_watch.py:watch():39] Watching
+2021-05-18 16:31:25,839 INFO    MainThread:16860 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-18 16:31:25,839 INFO    MainThread:16860 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-18 16:34:15,401 INFO    MainThread:16860 [wandb_init.py:_resume_backend():258] resuming backend
+2021-05-18 16:34:15,403 INFO    MainThread:16860 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-18 16:34:15,403 INFO    MainThread:16860 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-18 16:34:16,757 INFO    MainThread:16860 [wandb_init.py:_resume_backend():258] resuming backend
+2021-05-18 16:34:16,805 INFO    MainThread:16860 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-18 16:34:16,805 INFO    MainThread:16860 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-18 16:34:17,229 INFO    MainThread:16860 [wandb_init.py:_resume_backend():258] resuming backend
+2021-05-18 16:34:17,230 INFO    MainThread:16860 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-18 16:34:17,230 INFO    MainThread:16860 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-18 16:34:17,789 INFO    MainThread:16860 [wandb_init.py:_resume_backend():258] resuming backend
+2021-05-18 16:34:17,799 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting env: {}
+2021-05-18 16:34:17,800 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-05-18 16:34:17,800 ERROR   MainThread:16860 [wandb_setup.py:_flush():69] error
+Traceback (most recent call last):
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_init.py", line 741, in init
+    wi.setup(kwargs)
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_init.py", line 155, in setup
+    wandb_login._login(anonymous=anonymous, force=force, _disable_warning=True)
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_login.py", line 216, in _login
+    wlogin.prompt_api_key()
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\wandb_login.py", line 144, in prompt_api_key
+    no_create=self._settings.force,
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\lib\apikey.py", line 138, in prompt_api_key
+    write_key(settings, key, api=api)
+  File "C:\Users\Lorenzo\PycharmProjects\flow-forecast\venv\lib\site-packages\wandb\sdk\lib\apikey.py", line 223, in write_key
+    raise ValueError("API key must be 40 characters long, yours was %s" % len(key))
+ValueError: API key must be 40 characters long, yours was 31
+2021-05-18 16:34:17,800 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-05-18 16:34:17,800 INFO    MainThread:16860 [wandb_setup.py:_flush():69] setting login settings: {'api_key': 'e7db10531d60917492a41a48d803cf9aff2ee52f'}
+2021-05-18 16:34:17,801 INFO    MainThread:16860 [wandb_init.py:_log_setup():336] Logging user logs to C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210518_163417-1k9brct8\logs\debug.log
+2021-05-18 16:34:17,801 INFO    MainThread:16860 [wandb_init.py:_log_setup():337] Logging internal logs to C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210518_163417-1k9brct8\logs\debug-internal.log
+2021-05-18 16:34:17,802 INFO    MainThread:16860 [wandb_init.py:init():369] calling init triggers
+2021-05-18 16:34:17,802 INFO    MainThread:16860 [wandb_init.py:init():376] wandb.init called with sweep_config: {}
+config: {}
+2021-05-18 16:34:17,802 INFO    MainThread:16860 [wandb_init.py:init():391] re-initializing run, found existing run on stack: 27ntobae
+2021-05-18 16:34:17,803 INFO    MainThread:16860 [wandb_run.py:finish():1167] finishing run loloheia/pretrained-wind-updated/27ntobae
