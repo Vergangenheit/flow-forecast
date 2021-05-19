@@ -15,6 +15,7 @@ from flood_forecast.plot_functions import (
     plot_df_test_with_confidence_interval,
     plot_df_test_with_probabilistic_confidence_interval)
 from plotly.graph_objects import Figure
+from flood_forecast.config_sample import make_config_file
 
 
 def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRnnNet]:
@@ -51,11 +52,15 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
             trained_model.params["inference_params"]["dataset_params"] = trained_model.params["dataset_params"].copy()
             del trained_model.params["inference_params"]["dataset_params"]["class"]
             # noqa: F501
-            trained_model.params["inference_params"]["dataset_params"]["interpolate_param"] = trained_model.params["inference_params"]["dataset_params"].pop("interpolate")
-            trained_model.params["inference_params"]["dataset_params"]["scaling"] = trained_model.params["inference_params"]["dataset_params"].pop("scaler")
-            trained_model.params["inference_params"]["dataset_params"]["feature_params"] = trained_model.params["inference_params"]["dataset_params"].pop("feature_param")
-            delete_params = ["num_workers", "pin_memory", "train_start", "train_end", "valid_start", "valid_end", "test_start", "test_end",
-                            "training_path", "validation_path", "test_path", "batch_size"]
+            trained_model.params["inference_params"]["dataset_params"]["interpolate_param"] = \
+            trained_model.params["inference_params"]["dataset_params"].pop("interpolate")
+            trained_model.params["inference_params"]["dataset_params"]["scaling"] = \
+            trained_model.params["inference_params"]["dataset_params"].pop("scaler")
+            trained_model.params["inference_params"]["dataset_params"]["feature_params"] = \
+            trained_model.params["inference_params"]["dataset_params"].pop("feature_param")
+            delete_params = ["num_workers", "pin_memory", "train_start", "train_end", "valid_start", "valid_end",
+                             "test_start", "test_end",
+                             "training_path", "validation_path", "test_path", "batch_size"]
             for param in delete_params:
                 if param in trained_model.params["inference_params"]["dataset_params"]:
                     del trained_model.params["inference_params"]["dataset_params"][param]
@@ -84,7 +89,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
         forecast_start_idx: int = test_acc[2]
         df_prediction_samples: DataFrame = test_acc[3]
         mae: Series = (df_train_and_test.loc[forecast_start_idx:, "preds"] -
-               df_train_and_test.loc[forecast_start_idx:, params["dataset_params"]["target_col"][0]]).abs()
+                       df_train_and_test.loc[forecast_start_idx:, params["dataset_params"]["target_col"][0]]).abs()
         inverse_mae: Series = 1 / mae
         i = 0
         for df in df_prediction_samples:
@@ -98,7 +103,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
             test_plot: Figure = plot_df_test_with_probabilistic_confidence_interval(
                 df_train_and_test,
                 forecast_start_idx,
-                params,)
+                params, )
         elif len(df_prediction_samples) > 0:
             for thing in zip(df_prediction_samples, params["dataset_params"]["target_col"]):
                 thing[0].to_csv(thing[1] + ".csv")
@@ -126,8 +131,8 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
                     y=df_train_and_test[relevant_col],
                     name=relevant_col))
         test_plot_all.update_layout(width=1000, height=500, title="Placeholder",
-                          title_x=0.5, xaxis_title="time", yaxis_title='',
-                          legend_title="Legend")
+                                    title_x=0.5, xaxis_title="time", yaxis_title='',
+                                    legend_title="Legend")
         test_plot_all.show()
         wandb.log({"test_plot_all": test_plot_all})
     else:
@@ -142,11 +147,15 @@ def main():
     parser = argparse.ArgumentParser(description="Argument parsing for training and eval")
     parser.add_argument("-p", "--params", help="Path to model config file")
     args = parser.parse_args()
-    with open(args.params) as f:
-        training_config = json.load(f)
-    train_function(training_config["model_type"], training_config)
+    # with open(args.params) as f:
+    #     training_config = json.load(f)
+    # train_function(training_config["model_type"], training_config)
+    file_path: str = 'data/wind_train.csv'
+    full_len: int = len(pd.read_csv(file_path))
+    train_function("PyTorch", make_config_file(file_path, full_len))
     # evaluate_model(trained_model)
     print("Process is now complete.")
+
 
 if __name__ == "__main__":
     main()

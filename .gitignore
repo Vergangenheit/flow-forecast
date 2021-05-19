@@ -13,3 +13,5 @@ mypy
 *.png
 venv
 env
+*.csv
+wandb
