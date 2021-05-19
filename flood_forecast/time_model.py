@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Union
+from typing import Dict, Union, Optional
 import torch
 import json
 import os
 from datetime import datetime
-from flood_forecast.model_dict_function import pytorch_model_dict
+from flood_forecast.model_dict_function import pytorch_model_dict, Model
 from flood_forecast.pre_dict import scaler_dict
 from flood_forecast.preprocessing.pytorch_loaders import CSVDataLoader, AEDataloader, TemporalLoader, Loader
 from flood_forecast.gcp_integration.basic_utils import get_storage_client, upload_file
@@ -46,7 +46,7 @@ class TimeSeriesModel(ABC):
         self.crit = make_criterion_functions(params["metrics"])
 
     @abstractmethod
-    def load_model(self, model_base: str, model_params: Dict, weight_path=None) -> object:
+    def load_model(self, model_base: str, model_params: Dict, weight_path=None) -> Model:
         """
         This function should load and return the model
         this will vary based on the underlying framework used
@@ -54,7 +54,7 @@ class TimeSeriesModel(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def make_data_load(self, data_path, params: Dict, loader_type: str) -> object:
+    def make_data_load(self, data_path, params: Dict, loader_type: str) -> Loader:
         """
         Intializes a data loader based on the provided data_path.
         This may be as simple as a pandas dataframe or as complex as
@@ -63,7 +63,7 @@ class TimeSeriesModel(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def save_model(self, output_path: str):
+    def save_model(self, output_path: str, epoch: Optional[int]):
         """
         Saves a model to a specific path along with a configuration report
         of the parameters and data info.
@@ -84,7 +84,7 @@ class TimeSeriesModel(ABC):
             if self.wandb:
                 wandb.config.update({"gcs_m_path_" + str(epoch) + file_type: online_path})
 
-    def wandb_init(self):
+    def wandb_init(self) -> bool:
         if self.params["wandb"]:
             wandb.init(
                 project=self.params["wandb"]["project"],
@@ -111,7 +111,7 @@ class PyTorchForecast(TimeSeriesModel):
         super().__init__(model_base, training_data, validation_data, test_data, params_dict)
         print("Torch is using " + str(self.device))
 
-    def load_model(self, model_base: str, model_params: Dict, weight_path: str = None, strict=True):
+    def load_model(self, model_base: str, model_params: Dict, weight_path: str = None, strict=True) -> Model:
         if model_base in pytorch_model_dict:
             model = pytorch_model_dict[model_base](**model_params)
             if weight_path:

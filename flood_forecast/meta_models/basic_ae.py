@@ -1,5 +1,5 @@
 import torch
-from torch import nn
+from torch import nn, Tensor
 
 
 class AE(nn.Module):
@@ -50,7 +50,7 @@ class AE(nn.Module):
         reconstructed = torch.relu(activation)
         return reconstructed
 
-    def generate_representation(self, features):
+    def generate_representation(self, features: Tensor) -> Tensor:
         activation = self.encoder_hidden_layer(features)
         activation = torch.relu(activation)
         code = self.encoder_output_layer(activation)

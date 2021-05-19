@@ -52,4 +52,6 @@ decoding_functions = {"greedy_decode": greedy_decode, "simple_decode": simple_de
 
 pytorch_opt_dict = {"Adam": Adam, "SGD": SGD, "BertAdam": BertAdam}
 
+Model = TypeVar("Generic model", MultiAttnHeadSimple, SimpleTransformer, TransformerXL, DummyTorchModel, LSTMForecast, SimpleLinearModel, CustomTransformerDecoder, DARNN, DecoderTransformer, AE, Informer)
 Criterion = TypeVar("loss functions generic type", GaussianLoss, MASELoss, MSELoss, SmoothL1Loss, PoissonNLLLoss, RMSELoss, MAPELoss, DilateLoss, L1Loss, PenalizedMSELoss, NegativeLogLikelihood)
+Optimizer = TypeVar("generic optimizer", Adam, SGD, BertAdam)

@@ -26,7 +26,7 @@ class CSVDataLoader(Dataset):
             gcp_service_key: Optional[str] = None,
             interpolate_param: bool = False,
             sort_column: str = None,
-            scaled_cols=None,
+            scaled_cols: List =None,
             feature_params: Dict =None,
             id_series_col=None,
             no_scale=False
@@ -125,8 +125,8 @@ class CSVDataLoader(Dataset):
         )
 
     def inverse_scale(
-            self, result_data: Union[torch.Tensor, pd.Series, np.ndarray]
-    ) -> torch.Tensor:
+            self, result_data: Union[Tensor, Series, ndarray]
+    ) -> Tensor:
         """Un-does the scaling of the data
 
         :param result_data: The data you want to unscale can handle multiple data types.
@@ -134,17 +134,17 @@ class CSVDataLoader(Dataset):
         :return: Returns the unscaled data as PyTorch tensor.
         :rtype: torch.Tensor
         """
-        if isinstance(result_data, pd.Series) or isinstance(
-                result_data, pd.DataFrame
+        if isinstance(result_data, Series) or isinstance(
+                result_data, DataFrame
         ):
-            result_data_np = result_data.values
-        if isinstance(result_data, torch.Tensor):
+            result_data_np: ndarray = result_data.values
+        if isinstance(result_data, Tensor):
             if len(result_data.shape) > 2:
-                result_data = result_data.permute(2, 0, 1).reshape(result_data.shape[2], -1)
-                result_data = result_data.permute(1, 0)
-            result_data_np = result_data.numpy()
-        if isinstance(result_data, np.ndarray):
-            result_data_np = result_data
+                result_data: Tensor = result_data.permute(2, 0, 1).reshape(result_data.shape[2], -1)
+                result_data: Tensor = result_data.permute(1, 0)
+            result_data_np: ndarray = result_data.numpy()
+        if isinstance(result_data, ndarray):
+            result_data_np: ndarray = result_data
         # print(type(result_data))
         if self.no_scale:
             return torch.from_numpy(result_data_np)

@@ -31,11 +31,12 @@ SOFTWARE.
 import numpy as np
 import torch
 import torch.nn as nn
+from torch import Tensor
 import math
 # from torch.distributions.normal import Normal
 import copy
 from torch.nn.parameter import Parameter
-from typing import Dict
+from typing import Dict, Tuple, Union
 from flood_forecast.transformer_xl.lower_upper_config import activation_dict
 
 
@@ -306,7 +307,7 @@ class DecoderTransformer(nn.Module):
                 nn.init.normal_(m.weight, 0, 0.01)
                 nn.init.constant_(m.bias, 0)
 
-    def forward(self, x: torch.Tensor, series_id: int = None):
+    def forward(self, x: Tensor, series_id: int = None) -> Union[Tensor, Tuple[Tensor, Tensor]]:
         """
         Args:
             x: Tensor of dimension (batch_size, seq_len, number_of_time_series)
@@ -315,15 +316,15 @@ class DecoderTransformer(nn.Module):
             Case 1: tensor of dimension (batch_size, forecast_length)
             Case 2: GLoss sigma and mu: tuple of ((batch_size, forecast_history, 1), (batch_size, forecast_history, 1))
         """
-        h = self.transformer(series_id, x)
-        mu = self.mu(h)
-        sigma = self.sigma(h)
+        h: Tensor = self.transformer(series_id, x)
+        mu: Tensor = self.mu(h)
+        sigma: Tensor = self.sigma(h)
         if self.mu_mode:
-            sigma = self.softplus(sigma)
+            sigma: Tensor = self.softplus(sigma)
             return mu, sigma
         if self.forecast_len_layer:
             # Swap to (batch_size, 1, features) for linear layer
-            sigma = sigma.permute(0, 2, 1)
+            sigma: Tensor = sigma.permute(0, 2, 1)
             # Output (batch_size, forecast_len_)
-            sigma = self.forecast_len_layer(sigma).permute(0, 2, 1)
+            sigma: Tensor = self.forecast_len_layer(sigma).permute(0, 2, 1)
         return sigma.squeeze(2)

@@ -1,0 +1,795 @@
+2021-05-19 11:37:52,208 INFO    MainThread:17968 [internal.py:wandb_internal():91] W&B internal server running at pid: 17968, started at: 2021-05-19 11:37:52.203996
+2021-05-19 11:37:52,210 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: check_version
+2021-05-19 11:37:52,210 INFO    WriterThread:17968 [datastore.py:open_for_write():77] open: C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210519_113751-144e1whk\run-144e1whk.wandb
+2021-05-19 11:37:52,212 DEBUG   SenderThread:17968 [sender.py:send():160] send: header
+2021-05-19 11:37:52,212 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:37:52,215 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: check_version
+2021-05-19 11:37:52,291 DEBUG   SenderThread:17968 [sender.py:send():160] send: run
+2021-05-19 11:37:52,679 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: run_start
+2021-05-19 11:37:52,681 INFO    SenderThread:17968 [sender.py:_start_run_threads():654] run started: 144e1whk with start time 1621417071
+2021-05-19 11:37:52,681 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:37:52,681 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:37:52,691 DEBUG   HandlerThread:17968 [meta.py:__init__():39] meta init
+2021-05-19 11:37:52,691 DEBUG   HandlerThread:17968 [meta.py:__init__():53] meta init done
+2021-05-19 11:37:52,691 DEBUG   HandlerThread:17968 [meta.py:probe():210] probe
+2021-05-19 11:37:52,706 DEBUG   HandlerThread:17968 [meta.py:_setup_git():200] setup git
+2021-05-19 11:37:52,817 DEBUG   HandlerThread:17968 [meta.py:_setup_git():207] setup git done
+2021-05-19 11:37:52,817 DEBUG   HandlerThread:17968 [meta.py:_save_pip():57] save pip
+2021-05-19 11:37:52,818 DEBUG   HandlerThread:17968 [meta.py:_save_pip():71] save pip done
+2021-05-19 11:37:52,818 DEBUG   HandlerThread:17968 [meta.py:probe():252] probe done
+2021-05-19 11:37:52,893 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:37:52,894 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-metadata.json with policy now
+2021-05-19 11:37:52,899 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:37:52,899 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:37:52,899 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:37:52,902 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: pause
+2021-05-19 11:37:52,902 INFO    HandlerThread:17968 [handler.py:handle_request_pause():514] stopping system metrics thread
+2021-05-19 11:37:53,073 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:37:56,403 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: resume
+2021-05-19 11:37:56,404 INFO    HandlerThread:17968 [handler.py:handle_request_resume():509] starting system metrics thread
+2021-05-19 11:38:05,520 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:38:05,520 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\graph\graph_0_summary_1b41f09c.graph.json with policy now
+2021-05-19 11:38:05,522 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:38:05,523 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:38:05,523 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:38:05,524 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:38:05,524 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:38:05,525 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:38:08,086 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:38:08,086 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:38:08,087 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:38:23,285 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:38:23,285 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:38:23,285 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:38:27,681 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:38:38,034 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:38:38,035 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:38:38,037 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:38:38,037 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:38:38,038 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:38:38,038 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:38:38,457 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:38:38,457 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:38:38,457 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:38:53,653 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:38:53,653 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:38:53,653 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:39:01,194 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:39:08,826 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:39:08,827 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:39:08,827 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:39:13,274 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:39:13,275 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:39:13,277 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:39:13,277 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:39:13,278 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:39:13,278 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:39:24,022 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:39:24,023 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:39:24,023 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:39:34,685 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:39:39,215 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:39:39,215 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:39:39,215 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:39:50,819 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:39:50,820 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:39:50,822 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:39:50,823 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:39:50,823 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:39:50,824 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:39:54,389 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:39:54,390 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:39:54,390 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:40:08,181 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:40:09,740 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:40:09,741 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:40:09,741 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:40:24,913 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:40:24,913 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:40:24,913 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:40:28,835 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:40:28,836 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:40:28,837 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:40:28,838 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:40:28,838 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:40:28,838 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:40:40,159 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:40:40,159 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:40:40,159 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:40:41,732 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:40:55,333 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:40:55,333 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:40:55,334 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:41:07,515 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:41:07,516 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:41:07,519 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:41:07,519 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:41:07,519 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:41:07,520 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:41:10,518 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:41:10,518 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:41:10,518 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:41:15,200 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:41:25,704 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:41:25,705 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:41:25,705 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:41:40,880 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:41:40,880 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:41:40,880 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:41:46,327 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:41:46,327 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:41:46,328 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:41:46,328 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:41:46,328 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:41:46,329 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:41:48,643 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:41:56,070 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:41:56,070 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:41:56,070 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:42:11,242 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:42:11,243 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:42:11,243 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:42:22,071 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:42:24,326 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:42:24,327 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:42:24,328 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:42:24,328 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:42:24,328 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:42:24,329 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:42:26,418 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:42:26,418 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:42:26,418 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:42:41,662 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:42:41,662 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:42:41,662 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:42:55,440 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:42:56,842 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:42:56,842 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:42:56,842 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:43:02,763 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:43:02,763 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:43:02,765 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:43:02,765 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:43:02,765 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:43:02,766 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:43:12,039 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:43:12,039 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:43:12,039 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:43:27,223 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:43:27,223 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:43:27,223 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:43:28,877 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:43:41,702 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:43:41,711 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:43:41,727 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:43:41,727 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:43:41,727 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:43:41,737 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:43:42,402 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:43:42,403 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:43:42,403 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:43:57,601 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:43:57,601 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:43:57,601 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:44:02,221 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:44:12,766 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:44:12,766 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:44:12,766 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:44:19,547 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:44:19,548 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:44:19,564 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:44:19,564 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:44:19,564 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:44:19,574 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:44:27,954 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:44:27,954 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:44:27,955 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:44:35,586 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:44:43,129 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:44:43,129 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:44:43,129 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:44:58,330 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:44:58,330 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:44:58,332 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:45:08,824 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:45:13,500 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:45:13,501 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:45:13,501 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:45:28,676 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:45:28,677 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:45:28,677 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:45:42,016 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:45:43,936 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:45:43,937 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:45:43,937 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:45:59,122 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:45:59,122 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:45:59,122 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:46:14,310 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:46:14,310 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:46:14,310 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:46:15,229 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:46:18,329 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:18,329 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:18,340 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:18,340 DEBUG   SenderThread:17968 [sender.py:send():160] send: config
+2021-05-19 11:46:26,008 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:26,008 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Overall feature ranking by shap values_21_a5914c42.plotly.json with policy now
+2021-05-19 11:46:26,022 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,029 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,066 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,073 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,073 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,107 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,123 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,129 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,160 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,167 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,176 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,271 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,271 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,272 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,298 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,298 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,299 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,311 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,312 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,312 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,322 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,323 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,323 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,333 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,333 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,333 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,344 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,344 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,345 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,356 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,356 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,356 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,376 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,377 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,377 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,394 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,397 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,398 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,408 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,408 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,408 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,418 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,418 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,418 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,429 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,429 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,429 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,441 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,442 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,442 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,453 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,454 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,454 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,466 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,466 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,466 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,478 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,479 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,479 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,491 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,491 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,491 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,504 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,504 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,504 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,516 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,516 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,516 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,528 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,529 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,529 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,541 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,541 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,542 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,552 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,552 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,553 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,563 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,564 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,564 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,576 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,576 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,577 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,588 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,589 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,589 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,601 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,601 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,601 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,614 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,614 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,614 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,627 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:26,628 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:26,628 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Overall feature ranking per prediction time-step_52_0daaf458.plotly.json with policy now
+2021-05-19 11:46:26,629 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:26,629 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:26,641 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,125 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,125 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Austria_53_cfe10d69.plotly.json with policy now
+2021-05-19 11:46:27,134 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,134 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,160 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,161 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,161 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Belgium_54_0dab39c6.plotly.json with policy now
+2021-05-19 11:46:27,162 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,162 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,194 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,194 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,194 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Bulgaria_55_032f8db8.plotly.json with policy now
+2021-05-19 11:46:27,203 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,203 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,215 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,215 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,215 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Switzerland_56_ee2018cb.plotly.json with policy now
+2021-05-19 11:46:27,219 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,219 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,238 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,239 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,239 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Czechia_57_ac642ae4.plotly.json with policy now
+2021-05-19 11:46:27,251 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,251 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,286 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,286 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,286 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Germany_58_5fd6c29c.plotly.json with policy now
+2021-05-19 11:46:27,292 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,292 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,320 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,322 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,322 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Denmark_59_bd8cb902.plotly.json with policy now
+2021-05-19 11:46:27,336 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,336 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,364 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,365 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,365 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Estonia_60_3ff2c470.plotly.json with policy now
+2021-05-19 11:46:27,378 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,378 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,406 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,407 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,407 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Spain_61_b17909de.plotly.json with policy now
+2021-05-19 11:46:27,422 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,422 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,437 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,437 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,439 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Finland_62_0eb2ca36.plotly.json with policy now
+2021-05-19 11:46:27,481 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,483 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,503 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,504 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,504 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - France_63_4dcc84c2.plotly.json with policy now
+2021-05-19 11:46:27,548 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,549 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,570 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,570 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,570 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Greece_64_4fda35de.plotly.json with policy now
+2021-05-19 11:46:27,579 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,579 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,592 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,594 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,594 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Croatia_65_13c1b887.plotly.json with policy now
+2021-05-19 11:46:27,599 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,599 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,611 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,612 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,612 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Hungary_66_117746f3.plotly.json with policy now
+2021-05-19 11:46:27,619 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,619 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,632 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,633 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,633 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Ireland_67_d9962ecd.plotly.json with policy now
+2021-05-19 11:46:27,638 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,639 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,652 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,653 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,653 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Italy_68_0fb32150.plotly.json with policy now
+2021-05-19 11:46:27,661 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,661 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,678 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,680 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,680 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Lithuania_69_7699cd19.plotly.json with policy now
+2021-05-19 11:46:27,689 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,689 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,707 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,707 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,708 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Luxembourg_70_b0d432a9.plotly.json with policy now
+2021-05-19 11:46:27,711 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,711 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,726 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,726 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,726 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Latvia_71_28b2072d.plotly.json with policy now
+2021-05-19 11:46:27,732 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,732 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,744 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,745 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,745 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Netherlands_72_80b725d2.plotly.json with policy now
+2021-05-19 11:46:27,750 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,750 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,763 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,764 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,764 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Norway_73_4c31f047.plotly.json with policy now
+2021-05-19 11:46:27,769 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,769 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,782 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,783 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,783 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Poland_74_45c30dee.plotly.json with policy now
+2021-05-19 11:46:27,791 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,792 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,807 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,807 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,807 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Portugal_75_bc3b8764.plotly.json with policy now
+2021-05-19 11:46:27,818 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,818 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,830 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,831 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,831 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Romania_76_76c8133b.plotly.json with policy now
+2021-05-19 11:46:27,837 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,837 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,852 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,853 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,853 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Slovenia_77_3d4bff05.plotly.json with policy now
+2021-05-19 11:46:27,859 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,859 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,873 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,873 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,873 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Slovakia_78_46d76409.plotly.json with policy now
+2021-05-19 11:46:27,886 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,887 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,905 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,906 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,906 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - Sweden_79_f3d37429.plotly.json with policy now
+2021-05-19 11:46:27,916 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,916 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,931 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,931 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,932 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - United Kingdom_80_78ca9643.plotly.json with policy now
+2021-05-19 11:46:27,940 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,940 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,959 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,959 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,959 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - month_81_318b97c4.plotly.json with policy now
+2021-05-19 11:46:27,967 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,967 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:27,981 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:27,983 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:27,983 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Feature ranking for prediction at 2010-01-01 - weekday_82_1ac79af8.plotly.json with policy now
+2021-05-19 11:46:27,989 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:27,989 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:28,002 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:29,492 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:46:29,493 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:46:29,493 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:46:32,173 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,174 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Austria_83_cc7ea0b5.plotly.json with policy now
+2021-05-19 11:46:32,191 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,191 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,205 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,205 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,205 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Belgium_84_7d2bb41f.plotly.json with policy now
+2021-05-19 11:46:32,219 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,219 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,239 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,240 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,240 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Bulgaria_85_95715feb.plotly.json with policy now
+2021-05-19 11:46:32,247 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,247 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,268 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,269 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,269 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Switzerland_86_46d67173.plotly.json with policy now
+2021-05-19 11:46:32,276 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,276 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,296 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,297 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,297 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Czechia_87_a966e44e.plotly.json with policy now
+2021-05-19 11:46:32,313 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,313 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,332 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,333 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,333 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Germany_88_d91408cd.plotly.json with policy now
+2021-05-19 11:46:32,339 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,339 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,359 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,359 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,359 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Denmark_89_4c8ae058.plotly.json with policy now
+2021-05-19 11:46:32,373 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,373 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,386 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,387 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,387 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Estonia_90_854b23c4.plotly.json with policy now
+2021-05-19 11:46:32,401 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,401 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,419 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,420 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,420 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Spain_91_a3c62ac1.plotly.json with policy now
+2021-05-19 11:46:32,427 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,427 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,444 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,445 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,445 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Finland_92_34ecf0ea.plotly.json with policy now
+2021-05-19 11:46:32,467 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,467 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,487 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,489 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,489 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - France_93_dcbc71a5.plotly.json with policy now
+2021-05-19 11:46:32,510 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,510 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,531 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,533 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,533 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Greece_94_8eb9de83.plotly.json with policy now
+2021-05-19 11:46:32,561 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,561 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,582 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,582 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,582 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Croatia_95_7f76fb7f.plotly.json with policy now
+2021-05-19 11:46:32,603 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,603 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,622 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,624 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,624 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Hungary_96_22c8e9f1.plotly.json with policy now
+2021-05-19 11:46:32,640 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,640 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,655 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,655 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,655 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Ireland_97_419c8ad8.plotly.json with policy now
+2021-05-19 11:46:32,665 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,665 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,686 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,686 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,686 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Italy_98_76a63de3.plotly.json with policy now
+2021-05-19 11:46:32,705 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,705 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,726 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,726 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,727 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Lithuania_99_dffe55d7.plotly.json with policy now
+2021-05-19 11:46:32,736 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,737 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,757 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,758 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,758 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Luxembourg_100_eae233d0.plotly.json with policy now
+2021-05-19 11:46:32,774 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,774 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,787 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,795 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,795 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Latvia_101_41e81ebd.plotly.json with policy now
+2021-05-19 11:46:32,804 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,804 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,827 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,828 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,828 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Netherlands_102_eb284394.plotly.json with policy now
+2021-05-19 11:46:32,849 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,849 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,878 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,879 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,879 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Norway_103_df96728b.plotly.json with policy now
+2021-05-19 11:46:32,890 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,890 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,909 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,911 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,911 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Poland_104_93a05f9d.plotly.json with policy now
+2021-05-19 11:46:32,922 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,923 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,939 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,940 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,940 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Portugal_105_e771fc46.plotly.json with policy now
+2021-05-19 11:46:32,953 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,953 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,968 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,968 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,968 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Romania_106_88a9e745.plotly.json with policy now
+2021-05-19 11:46:32,977 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:32,977 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:32,995 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:32,997 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:32,997 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Slovenia_107_c6d2f6b1.plotly.json with policy now
+2021-05-19 11:46:33,039 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:33,039 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:33,053 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:33,055 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:33,055 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Slovakia_108_262c0cd8.plotly.json with policy now
+2021-05-19 11:46:33,067 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:33,067 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:33,081 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:33,082 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:33,082 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - Sweden_109_53f99e18.plotly.json with policy now
+2021-05-19 11:46:33,092 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:33,092 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:33,105 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:33,107 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:33,109 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - United Kingdom_110_6a46da0c.plotly.json with policy now
+2021-05-19 11:46:33,122 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:33,122 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:33,135 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:33,136 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:33,136 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - month_111_e3a07954.plotly.json with policy now
+2021-05-19 11:46:33,147 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:33,147 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:33,160 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:33,161 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:33,161 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Average prediction heatmaps - weekday_112_9ec0f335.plotly.json with policy now
+2021-05-19 11:46:33,169 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:33,169 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:33,189 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,151 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,152 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Austria_113_e7d19fd5.plotly.json with policy now
+2021-05-19 11:46:34,164 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,164 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,185 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,185 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,185 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Belgium_114_1a4244d6.plotly.json with policy now
+2021-05-19 11:46:34,193 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,194 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,212 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,213 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,213 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Bulgaria_115_f08557f1.plotly.json with policy now
+2021-05-19 11:46:34,221 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,221 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,240 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,241 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,241 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Switzerland_116_8b1c5df4.plotly.json with policy now
+2021-05-19 11:46:34,257 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,257 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,279 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,279 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,279 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Czechia_117_30f0ad03.plotly.json with policy now
+2021-05-19 11:46:34,296 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,296 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,316 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,316 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,316 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Germany_118_b706c798.plotly.json with policy now
+2021-05-19 11:46:34,326 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,327 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,347 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,349 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,349 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Denmark_119_77b2cf87.plotly.json with policy now
+2021-05-19 11:46:34,366 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,366 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,386 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,388 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,388 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Estonia_120_fd78f0f3.plotly.json with policy now
+2021-05-19 11:46:34,416 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,416 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,436 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,437 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,437 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Spain_121_b13c62dc.plotly.json with policy now
+2021-05-19 11:46:34,458 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,458 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,479 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,479 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,480 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Finland_122_7e9de2c6.plotly.json with policy now
+2021-05-19 11:46:34,498 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,498 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,520 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,522 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,522 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - France_123_5a7068cf.plotly.json with policy now
+2021-05-19 11:46:34,548 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,548 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,571 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,572 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,572 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Greece_124_8b48f70b.plotly.json with policy now
+2021-05-19 11:46:34,592 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,592 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,613 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,614 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,614 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Croatia_125_7686ca30.plotly.json with policy now
+2021-05-19 11:46:34,637 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,637 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,659 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,659 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,659 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Hungary_126_f72e2e72.plotly.json with policy now
+2021-05-19 11:46:34,682 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,682 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,705 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,705 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,705 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Ireland_127_742e7399.plotly.json with policy now
+2021-05-19 11:46:34,725 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,725 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,749 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,750 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,750 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Italy_128_f19f6904.plotly.json with policy now
+2021-05-19 11:46:34,778 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,779 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,808 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,809 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,809 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Lithuania_129_1b972209.plotly.json with policy now
+2021-05-19 11:46:34,829 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,829 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,844 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,845 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,846 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Luxembourg_130_2eb1a9e3.plotly.json with policy now
+2021-05-19 11:46:34,856 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,856 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,870 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,870 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,870 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Latvia_131_b541bb27.plotly.json with policy now
+2021-05-19 11:46:34,881 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,881 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,896 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,897 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,897 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Netherlands_132_cb7671a6.plotly.json with policy now
+2021-05-19 11:46:34,913 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,913 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,927 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,929 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,929 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Norway_133_ce1ea91b.plotly.json with policy now
+2021-05-19 11:46:34,942 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,942 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,959 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,960 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,960 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Poland_134_4d39d612.plotly.json with policy now
+2021-05-19 11:46:34,973 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,973 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:34,987 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:34,987 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:34,987 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Portugal_135_0cb13dac.plotly.json with policy now
+2021-05-19 11:46:34,998 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:34,999 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,015 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,016 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,016 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Romania_136_995e9659.plotly.json with policy now
+2021-05-19 11:46:35,030 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,030 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,043 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,044 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,044 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Slovenia_137_7730afb1.plotly.json with policy now
+2021-05-19 11:46:35,056 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,056 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,069 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,071 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,071 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Slovakia_138_849c0807.plotly.json with policy now
+2021-05-19 11:46:35,089 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,089 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,104 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,105 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,105 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - Sweden_139_356a61b8.plotly.json with policy now
+2021-05-19 11:46:35,127 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,128 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,142 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,142 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,143 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - United Kingdom_140_f5a034a7.plotly.json with policy now
+2021-05-19 11:46:35,157 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,158 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,174 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,175 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,175 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - month_141_51a98f43.plotly.json with policy now
+2021-05-19 11:46:35,190 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,191 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,206 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,207 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,207 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\Heatmap for prediction at 2010-01-01 - weekday_142_584e964c.plotly.json with policy now
+2021-05-19 11:46:35,224 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,224 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,264 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,276 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,290 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,426 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,426 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\test_plot_Austria_143_de624f00.plotly.json with policy now
+2021-05-19 11:46:35,440 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,440 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,453 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,731 DEBUG   SenderThread:17968 [sender.py:send():160] send: files
+2021-05-19 11:46:35,731 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file media\plotly\test_plot_all_144_cf94a11b.plotly.json with policy now
+2021-05-19 11:46:35,740 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: pause
+2021-05-19 11:46:35,740 INFO    HandlerThread:17968 [handler.py:handle_request_pause():514] stopping system metrics thread
+2021-05-19 11:46:35,747 DEBUG   SenderThread:17968 [sender.py:send():160] send: history
+2021-05-19 11:46:35,747 DEBUG   SenderThread:17968 [sender.py:send():160] send: summary
+2021-05-19 11:46:35,765 INFO    SenderThread:17968 [sender.py:_save_file():781] saving file wandb-summary.json with policy end
+2021-05-19 11:46:35,843 DEBUG   SenderThread:17968 [sender.py:send():160] send: stats
+2021-05-19 11:46:44,685 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:46:44,686 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:46:44,686 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:46:59,912 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:46:59,913 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:46:59,914 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:47:15,139 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:47:15,140 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:47:15,140 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status
+2021-05-19 11:47:30,385 DEBUG   HandlerThread:17968 [handler.py:handle_request():120] handle_request: status
+2021-05-19 11:47:30,386 DEBUG   SenderThread:17968 [sender.py:send():160] send: request
+2021-05-19 11:47:30,386 DEBUG   SenderThread:17968 [sender.py:send_request():169] send_request: status

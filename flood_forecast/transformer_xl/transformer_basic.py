@@ -1,4 +1,5 @@
 import torch
+from torch import Tensor
 import math
 from torch.nn.modules import Transformer, TransformerEncoder, TransformerEncoderLayer, LayerNorm
 from flood_forecast.transformer_xl.masks import generate_square_subsequent_mask
@@ -36,14 +37,14 @@ class SimpleTransformer(torch.nn.Module):
         if sigmoid:
             self.sigmoid = torch.nn.Sigmoid()
 
-    def forward(self, x: torch.Tensor, t: torch.Tensor, tgt_mask=None, src_mask=None):
+    def forward(self, x: torch.Tensor, t: torch.Tensor, tgt_mask=None, src_mask=None) -> Tensor:
         if src_mask:
             x = self.encode_sequence(x[:, :-1, :], src_mask)
         else:
             x = self.encode_sequence(x[:, :-1, :], src_mask)
         return self.decode_seq(x, t, tgt_mask)
 
-    def basic_feature(self, x: torch.Tensor):
+    def basic_feature(self, x: Tensor) -> Tensor:
         x = self.dense_shape(x)
         x = self.pe(x)
         x = x.permute(1, 0, 2)
@@ -54,7 +55,7 @@ class SimpleTransformer(torch.nn.Module):
         x = self.transformer.encoder(x, src_mask)
         return x
 
-    def decode_seq(self, mem, t, tgt_mask=None, view_number=None) -> torch.Tensor:
+    def decode_seq(self, mem, t, tgt_mask=None, view_number=None) -> Tensor:
         if view_number is None:
             view_number = self.out_seq_len
         if tgt_mask is None:

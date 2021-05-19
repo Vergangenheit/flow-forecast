@@ -1,12 +1,13 @@
 import torch
 import torch.optim as optim
-from typing import Type, Dict
+from torch import Tensor
+from typing import Type, Dict, Union
 from torch.utils.data import DataLoader
 import json
 import wandb
 from flood_forecast.utils import numpy_to_tvar
 from flood_forecast.time_model import PyTorchForecast
-from flood_forecast.model_dict_function import pytorch_opt_dict, pytorch_criterion_dict, Criterion
+from flood_forecast.model_dict_function import pytorch_opt_dict, pytorch_criterion_dict, Criterion, Optimizer, Model
 from flood_forecast.transformer_xl.transformer_basic import greedy_decode
 from flood_forecast.basic.linear_regression import simple_decode
 from flood_forecast.training_utils import EarlyStopper
@@ -74,7 +75,7 @@ def train_transformer_style(
         print("Pin memory set to true")
     if "early_stopping" in model.params:
         es = EarlyStopper(model.params["early_stopping"]['patience'])
-    opt = pytorch_opt_dict[training_params["optimizer"]](
+    opt: Optimizer = pytorch_opt_dict[training_params["optimizer"]](
         model.model.parameters(), **training_params["optim_params"])
     criterion_init_params = {}
     if "criterion_params" in training_params:
@@ -218,7 +219,7 @@ def handle_scaling(validation_dataset, src, output: torch.Tensor, labels, probab
     return src, output, labels, output_dist
 
 
-def compute_loss(labels, output, src, criterion, validation_dataset, probabilistic=None, output_std=None, m=1):
+def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset, probabilistic=None, output_std=None, m=1) -> Union[float, Criterion]:
     """Function for computing the loss
 
     :param labels: The real values for the target. Shape can be variable but should follow (batch_size, time)
@@ -242,10 +243,10 @@ def compute_loss(labels, output, src, criterion, validation_dataset, probabilist
 """
     if isinstance(criterion, GaussianLoss):
         if len(output[0].shape) > 2:
-            g_loss = GaussianLoss(output[0][:, :, 0], output[1][:, :, 0])
+            g_loss: Criterion = GaussianLoss(output[0][:, :, 0], output[1][:, :, 0])
         else:
-            g_loss = GaussianLoss(output[0][:, 0], output[1][:, 0])
-        loss = g_loss(labels)
+            g_loss: Criterion = GaussianLoss(output[0][:, 0], output[1][:, 0])
+        loss: Criterion = g_loss(labels)
         return loss
     if not probabilistic and isinstance(output, torch.Tensor):
         if len(labels.shape) != len(output.shape):
@@ -257,32 +258,32 @@ def compute_loss(labels, output, src, criterion, validation_dataset, probabilist
     if probabilistic:
         if type(output_std) != torch.Tensor:
             print("Converted tensor")
-            output_std = torch.from_numpy(output_std)
+            output_std: Tensor = torch.from_numpy(output_std)
         if type(output) != torch.Tensor:
-            output = torch.from_numpy(output)
+            output: Tensor = torch.from_numpy(output)
         output_dist = torch.distributions.Normal(output, output_std)
     if validation_dataset:
         src, output, labels, output_dist = handle_scaling(validation_dataset, src, output, labels,
                                                           probabilistic, m, output_std)
     if probabilistic:
-        loss = -output_dist.log_prob(labels.float()).sum()  # FIX THIS?
+        loss: float = -output_dist.log_prob(labels.float()).sum()  # FIX THIS?
     elif isinstance(criterion, MASELoss):
         assert len(labels.shape) == len(output.shape)
-        loss = criterion(labels.float(), output, src, m)
+        loss: Criterion = criterion(labels.float(), output, src, m)
     else:
         assert len(labels.shape) == len(output.shape)
         assert labels.shape[0] == output.shape[0]
-        loss = criterion(output, labels.float())
+        loss: Criterion = criterion(output, labels.float())
     return loss
 
 
 def torch_single_train(model: PyTorchForecast,
-                       opt: optim.Optimizer,
-                       criterion: Type[torch.nn.modules.loss._Loss],
+                       opt: Optimizer,
+                       criterion: Criterion,
                        data_loader: DataLoader,
                        takes_target: bool,
                        meta_data_model: PyTorchForecast,
-                       meta_data_model_representation: torch.Tensor,
+                       meta_data_model_representation: Tensor,
                        meta_loss=None,
                        multi_targets=1,
                        forward_params: Dict = {}) -> float:
@@ -299,11 +300,11 @@ def torch_single_train(model: PyTorchForecast,
         # Convert to CPU/GPU/TPU
 
         if meta_data_model:
-            representation = meta_data_model.model.generate_representation(meta_data_model_representation)
+            representation: Tensor = meta_data_model.model.generate_representation(meta_data_model_representation)
             forward_params["meta_data"] = representation
             if meta_loss:
-                output = meta_data_model.model(meta_data_model_representation)
-                met_loss = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss, None)
+                output: Model = meta_data_model.model(meta_data_model_representation)
+                met_loss: Criterion = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss, None)
                 met_loss.backward()
         if takes_target:
             forward_params["t"] = trg
