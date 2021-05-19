@@ -219,7 +219,7 @@ def handle_scaling(validation_dataset, src, output: torch.Tensor, labels, probab
     return src, output, labels, output_dist
 
 
-def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset, probabilistic=None, output_std=None, m=1) -> Union[float, Criterion]:
+def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset, probabilistic=None, output_std=None, m=1) -> Union[Tensor, float, Criterion]:
     """Function for computing the loss
 
     :param labels: The real values for the target. Shape can be variable but should follow (batch_size, time)
@@ -296,6 +296,8 @@ def torch_single_train(model: PyTorchForecast,
     mulit_targets_copy = multi_targets
     running_loss = 0.0
     for src, trg in data_loader:
+        if i == 0:
+            print(src.size(), trg.size())
         opt.zero_grad()
         # Convert to CPU/GPU/TPU
 
@@ -304,7 +306,7 @@ def torch_single_train(model: PyTorchForecast,
             forward_params["meta_data"] = representation
             if meta_loss:
                 output: Model = meta_data_model.model(meta_data_model_representation)
-                met_loss: Criterion = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss, None)
+                met_loss: Tensor = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss, None)
                 met_loss.backward()
         if takes_target:
             forward_params["t"] = trg
@@ -317,7 +319,8 @@ def torch_single_train(model: PyTorchForecast,
             trg = trg[0]
         src = src.to(model.device)
         trg = trg.to(model.device)
-        output = model.model(src, **forward_params)
+        output: Tensor = model.model(src, **forward_params)
+
         if hasattr(model.model, "pred_len"):
             multi_targets = mulit_targets_copy
             pred_len = model.model.pred_len
@@ -332,7 +335,7 @@ def torch_single_train(model: PyTorchForecast,
             output = output.mean
             output_std = output1.stddev
 
-        loss = compute_loss(labels, output, src, criterion, None, probablistic, output_std, m=multi_targets)
+        loss: Tensor = compute_loss(labels, output, src, criterion, None, probablistic, output_std, m=multi_targets)
         if loss > 100:
             print("Warning: high loss detected")
         loss.backward()

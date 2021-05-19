@@ -23,6 +23,3 @@ _wandb:
       - 1
       - 3
       - 5
-save_path:
-  desc: null
-  value: model_save\19_May_202111_46AM_model.pth

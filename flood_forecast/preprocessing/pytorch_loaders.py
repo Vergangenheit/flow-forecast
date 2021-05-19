@@ -101,6 +101,7 @@ class CSVDataLoader(Dataset):
         if (len(self.df) - self.df.count()).max() != 0:
             print("Error nan values detected in data. Please run interpolate ffill or bfill on data")
         self.targ_col: List = target_col
+        print("target columns are ", self.targ_col)
         self.df.to_csv("temp_df.csv")
         self.no_scale = no_scale
 
@@ -108,11 +109,11 @@ class CSVDataLoader(Dataset):
         rows: DataFrame = self.df.iloc[idx: self.forecast_history + idx]
         targs_idx_start: int = self.forecast_history + idx
         if self.no_scale:
-            targ_rows: DataFrame = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
+            targ_rows: DataFrame = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start][self.targ_col]
         else:
             targ_rows: DataFrame = self.df.iloc[
                         targs_idx_start: self.forecast_length + targs_idx_start
-                        ]
+                        ][self.targ_col]
         src_data: ndarray = rows.to_numpy()
         src_data: Tensor = torch.from_numpy(src_data).float()
         trg_dat: ndarray = targ_rows.to_numpy()

@@ -30,3 +30,56 @@ config: {}
 2021-05-19 11:46:18,337 INFO    MainThread:14952 [wandb_run.py:_config_callback():749] config_cb save_path model_save\19_May_202111_46AM_model.pth None
 2021-05-19 11:46:35,731 INFO    MainThread:14952 [wandb_init.py:_pause_backend():249] pausing backend
 2021-05-19 11:46:35,731 INFO    MainThread:14952 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-19 11:52:48,087 INFO    MainThread:14952 [wandb_run.py:_atexit_cleanup():1494] got exitcode: 0
+2021-05-19 11:52:48,089 INFO    MainThread:14952 [wandb_run.py:_restore():1466] restore
+2021-05-19 11:52:48,393 INFO    MainThread:14952 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 95
+}
+pusher_stats {
+  uploaded_bytes: 6260879
+  total_bytes: 6260879
+}
+
+2021-05-19 11:52:48,918 INFO    MainThread:14952 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 95
+}
+pusher_stats {
+  uploaded_bytes: 6260879
+  total_bytes: 6443948
+}
+
+2021-05-19 11:52:49,598 INFO    MainThread:14952 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 95
+}
+pusher_stats {
+  uploaded_bytes: 6443948
+  total_bytes: 6443948
+}
+
+2021-05-19 11:52:49,710 INFO    MainThread:14952 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 95
+}
+pusher_stats {
+  uploaded_bytes: 6443948
+  total_bytes: 6443948
+}
+
+2021-05-19 11:52:49,818 INFO    MainThread:14952 [wandb_run.py:_wait_for_finish():1616] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+  media_count: 95
+}
+pusher_stats {
+  uploaded_bytes: 6443948
+  total_bytes: 6443948
+}
+
+2021-05-19 11:52:50,974 INFO    MainThread:14952 [wandb_run.py:_show_summary():1771] rendering summary
+2021-05-19 11:52:50,975 INFO    MainThread:14952 [wandb_run.py:_show_history():1809] rendering history
+2021-05-19 11:52:50,976 INFO    MainThread:14952 [wandb_run.py:_show_files():1838] logging synced files
