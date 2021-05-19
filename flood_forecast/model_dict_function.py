@@ -16,6 +16,7 @@ from flood_forecast.custom.custom_opt import (RMSELoss, MAPELoss, PenalizedMSELo
 from flood_forecast.transformer_xl.transformer_bottleneck import DecoderTransformer
 from flood_forecast.custom.dilate_loss import DilateLoss
 from flood_forecast.meta_models.basic_ae import AE
+from typing import TypeVar
 
 """
 Utility dictionaries to map a string to a class .
@@ -50,3 +51,5 @@ pytorch_criterion_dict = {
 decoding_functions = {"greedy_decode": greedy_decode, "simple_decode": simple_decode}
 
 pytorch_opt_dict = {"Adam": Adam, "SGD": SGD, "BertAdam": BertAdam}
+
+Criterion = TypeVar("loss functions generic type", GaussianLoss, MASELoss, MSELoss, SmoothL1Loss, PoissonNLLLoss, RMSELoss, MAPELoss, DilateLoss, L1Loss, PenalizedMSELoss, NegativeLogLikelihood)

@@ -1,9 +1,11 @@
 from torch.utils.data import Dataset
 import numpy as np
+from numpy import ndarray
 import pandas as pd
+from pandas import DataFrame, Series
 import torch
-from typing import List, Union, Optional
-from flood_forecast.pre_dict import interpolate_dict
+from typing import List, Union, Optional, TypeVar, NewType, Dict
+from flood_forecast.pre_dict import interpolate_dict, Scaler
 from flood_forecast.preprocessing.buil_dataset import get_data
 from datetime import datetime
 from flood_forecast.preprocessing.temporal_feats import feature_fix
@@ -11,22 +13,22 @@ from flood_forecast.preprocessing.temporal_feats import feature_fix
 
 class CSVDataLoader(Dataset):
     def __init__(
-        self,
-        file_path: str,
-        forecast_history: int,
-        forecast_length: int,
-        target_col: List,
-        relevant_cols: List,
-        scaling=None,
-        start_stamp: int = 0,
-        end_stamp: int = None,
-        gcp_service_key: Optional[str] = None,
-        interpolate_param: bool = False,
-        sort_column=None,
-        scaled_cols=None,
-        feature_params=None,
-        id_series_col=None,
-        no_scale=False
+            self,
+            file_path: str,
+            forecast_history: int,
+            forecast_length: int,
+            target_col: List,
+            relevant_cols: List,
+            scaling: Scaler =None,
+            start_stamp: int = 0,
+            end_stamp: int = None,
+            gcp_service_key: Optional[str] = None,
+            interpolate_param: bool = False,
+            sort_column: str = None,
+            scaled_cols=None,
+            feature_params: Dict =None,
+            id_series_col=None,
+            no_scale=False
 
     ):
         """
@@ -56,25 +58,25 @@ class CSVDataLoader(Dataset):
         self.forecast_length = forecast_length
         self.series_col = id_series_col
         print("interpolate should be below")
-        self.local_file_path = get_data(file_path, gcp_service_key)
-        df = pd.read_csv(self.local_file_path)
+        self.local_file_path: str = get_data(file_path, gcp_service_key)
+        df: DataFrame = pd.read_csv(self.local_file_path)
         relevant_cols3 = []
         if sort_column:
-            df[sort_column] = pd.to_datetime(df[sort_column])
-            df = df.sort_values(by=sort_column)
+            df[sort_column]: Series = pd.to_datetime(df[sort_column])
+            df: DataFrame = df.sort_values(by=sort_column)
             if feature_params:
                 df, relevant_cols3 = feature_fix(feature_params, sort_column, df)
                 print("Created datetime feature columns are: ")
         print(relevant_cols3)
         self.relevant_cols3 = relevant_cols3
         if interpolate:
-            df = interpolate_dict[interpolate["method"]](df, **interpolate["params"])
+            df: DataFrame = interpolate_dict[interpolate["method"]](df, **interpolate["params"])
         self.df = df[relevant_cols + relevant_cols3].copy()
         print("Now loading " + file_path)
         self.original_df = df
         self.scale = None
         if scaled_cols is None:
-            scaled_cols = relevant_cols
+            scaled_cols: List = relevant_cols
         if start_stamp != 0 and end_stamp is not None:
             self.df = self.df[start_stamp:end_stamp]
         elif start_stamp != 0:
@@ -84,32 +86,32 @@ class CSVDataLoader(Dataset):
         self.unscaled_df = self.df
         if scaling is not None:
             print("scaling now")
-            self.scale = scaling.fit(self.df[scaled_cols])
-            temp_df = self.scale.transform(self.df[scaled_cols])
+            self.scale: Scaler = scaling.fit(self.df[scaled_cols])
+            temp_df: ndarray = self.scale.transform(self.df[scaled_cols])
 
             # We define a second scaler to scale the end output
             # back to normal as models might not necessarily predict
             # other present time series values.
             targ_scale_class = self.scale.__class__
             self.targ_scaler = targ_scale_class()
-            self.df[target_col] = self.targ_scaler.fit_transform(self.df[target_col])
+            self.df[target_col]: Union[Series, ndarray] = self.targ_scaler.fit_transform(self.df[target_col])
 
             self.df[scaled_cols] = temp_df
         if (len(self.df) - self.df.count()).max() != 0:
             print("Error nan values detected in data. Please run interpolate ffill or bfill on data")
-        self.targ_col = target_col
+        self.targ_col: List = target_col
         self.df.to_csv("temp_df.csv")
         self.no_scale = no_scale
 
     def __getitem__(self, idx):
-        rows = self.df.iloc[idx: self.forecast_history + idx]
+        rows: DataFrame = self.df.iloc[idx: self.forecast_history + idx]
         targs_idx_start = self.forecast_history + idx
         if self.no_scale:
             targ_rows = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
         else:
             targ_rows = self.df.iloc[
-                targs_idx_start: self.forecast_length + targs_idx_start
-            ]
+                        targs_idx_start: self.forecast_length + targs_idx_start
+                        ]
         src_data = rows.to_numpy()
         src_data = torch.from_numpy(src_data).float()
         trg_dat = targ_rows.to_numpy()
@@ -118,11 +120,11 @@ class CSVDataLoader(Dataset):
 
     def __len__(self) -> int:
         return (
-            len(self.df.index) - self.forecast_history - self.forecast_length - 1
+                len(self.df.index) - self.forecast_history - self.forecast_length - 1
         )
 
     def inverse_scale(
-        self, result_data: Union[torch.Tensor, pd.Series, np.ndarray]
+            self, result_data: Union[torch.Tensor, pd.Series, np.ndarray]
     ) -> torch.Tensor:
         """Un-does the scaling of the data
 
@@ -132,7 +134,7 @@ class CSVDataLoader(Dataset):
         :rtype: torch.Tensor
         """
         if isinstance(result_data, pd.Series) or isinstance(
-            result_data, pd.DataFrame
+                result_data, pd.DataFrame
         ):
             result_data_np = result_data.values
         if isinstance(result_data, torch.Tensor):
@@ -152,15 +154,15 @@ class CSVDataLoader(Dataset):
 
 class CSVTestLoader(CSVDataLoader):
     def __init__(
-        self,
-        df_path: str,
-        forecast_total: int,
-        use_real_precip=True,
-        use_real_temp=True,
-        target_supplied=True,
-        interpolate=False,
-        sort_column_clone=None,
-        **kwargs
+            self,
+            df_path: str,
+            forecast_total: int,
+            use_real_precip=True,
+            use_real_temp=True,
+            target_supplied=True,
+            interpolate=False,
+            sort_column_clone=None,
+            **kwargs
     ):
         """
         :param str df_path:
@@ -193,7 +195,7 @@ class CSVTestLoader(CSVDataLoader):
     def get_from_start_date(self, forecast_start: datetime):
         dt_row = self.original_df[
             self.original_df["datetime"] == forecast_start
-        ]
+            ]
         revised_index = dt_row.index[0]
         return self.__getitem__(revised_index - self.forecast_history)
 
@@ -206,8 +208,8 @@ class CSVTestLoader(CSVDataLoader):
             #     target_idx_start : self.forecast_total + target_idx_start
             # ]
             all_rows_orig = self.original_df.iloc[
-                idx: self.forecast_total + target_idx_start
-            ].copy()
+                            idx: self.forecast_total + target_idx_start
+                            ].copy()
             historical_rows = torch.from_numpy(historical_rows.to_numpy())
             return historical_rows.float(), all_rows_orig, target_idx_start
 
@@ -219,14 +221,14 @@ class CSVTestLoader(CSVDataLoader):
         the_column = torch.from_numpy(rows_to_convert[the_col].to_numpy())
         chunks = [
             the_column[
-                self.forecast_length * i: self.forecast_length * (i + 1)
+            self.forecast_length * i: self.forecast_length * (i + 1)
             ]
             for i in range(len(the_column) // self.forecast_length + 1)
         ]
         return chunks
 
     def convert_history_batches(
-        self, the_col: Union[str, List[str]], rows_to_convert: pd.DataFrame
+            self, the_col: Union[str, List[str]], rows_to_convert: pd.DataFrame
     ):
         """A helper function to return dataframe in batches of
         size (history_len, num_features)
@@ -239,7 +241,7 @@ class CSVTestLoader(CSVDataLoader):
         the_column = torch.from_numpy(rows_to_convert[the_col].to_numpy())
         chunks = [
             the_column[
-                self.forecast_history * i: self.forecast_history * (i + 1)
+            self.forecast_history * i: self.forecast_history * (i + 1)
             ]
             for i in range(len(the_column) // self.forecast_history + 1)
         ]
@@ -247,7 +249,7 @@ class CSVTestLoader(CSVDataLoader):
 
     def __len__(self) -> int:
         return (
-            len(self.df.index) - self.forecast_history - self.forecast_total - 1
+                len(self.df.index) - self.forecast_history - self.forecast_total - 1
         )
 
 
@@ -277,7 +279,7 @@ class AEDataloader(CSVDataLoader):
                          scaling=scaling)
         self.unsqueeze_dim = unsqueeze_dim
 
-    def __handle_params__():
+    def __handle_params__(self):
         pass
 
     def __len__(self):
@@ -319,8 +321,8 @@ class TemporalLoader(CSVDataLoader):
         temporal_feats = self.temporal_df.iloc[idx: self.forecast_history + idx]
         targs_idx_start = self.forecast_history + idx
         targ_rows = self.other_feats.iloc[
-            targs_idx_start: self.forecast_length + targs_idx_start
-        ]
+                    targs_idx_start: self.forecast_length + targs_idx_start
+                    ]
         tar_temporal_feats = self.temporal_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
         src_data = self.df_to_numpy(rows)
         trg_data = self.df_to_numpy(targ_rows)
@@ -330,7 +332,7 @@ class TemporalLoader(CSVDataLoader):
 
     def __len__(self):
         return (
-            len(self.df.index) - self.forecast_history - self.forecast_length - 1
+                len(self.df.index) - self.forecast_history - self.forecast_length - 1
         )
 
 
@@ -378,7 +380,10 @@ class TemporalTestLoader(CSVTestLoader):
             temporal_feat = self.df_to_numpy(temporal_feat)
             tar_temp = self.df_to_numpy(tar_temporal_feats)
             all_rows_orig = self.original_df.iloc[
-                idx: self.forecast_total + target_idx_start
-            ].copy()
+                            idx: self.forecast_total + target_idx_start
+                            ].copy()
             historical_rows = torch.from_numpy(historical_rows.to_numpy())
             return (src_data, temporal_feat), (tar_temp, trg_data), all_rows_orig, target_idx_start
+
+
+Loader = TypeVar("generic loader type", CSVDataLoader, CSVTestLoader, AEDataloader, TemporalLoader, TemporalTestLoader)

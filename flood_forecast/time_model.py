@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 from flood_forecast.model_dict_function import pytorch_model_dict
 from flood_forecast.pre_dict import scaler_dict
-from flood_forecast.preprocessing.pytorch_loaders import CSVDataLoader, AEDataloader, TemporalLoader
+from flood_forecast.preprocessing.pytorch_loaders import CSVDataLoader, AEDataloader, TemporalLoader, Loader
 from flood_forecast.gcp_integration.basic_utils import get_storage_client, upload_file
 from flood_forecast.utils import make_criterion_functions
 from flood_forecast.preprocessing.buil_dataset import get_data
@@ -166,10 +166,10 @@ class PyTorchForecast(TimeSeriesModel):
             data_path: str,
             dataset_params: Dict,
             loader_type: str,
-            the_class="default") -> Union[CSVDataLoader, AEDataloader, TemporalLoader]:
+            the_class="default") -> Loader:
         start_end_params = {}
-        the_class = dataset_params["class"]
-        start_end_params = scaling_function(start_end_params, dataset_params)
+        the_class: str = dataset_params["class"]
+        start_end_params: Dict = scaling_function(start_end_params, dataset_params)
         # TODO clean up else if blocks
         if loader_type + "_start" in dataset_params:
             start_end_params["start_stamp"] = dataset_params[loader_type + "_start"]

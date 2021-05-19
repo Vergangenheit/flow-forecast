@@ -6,7 +6,7 @@ import json
 import wandb
 from flood_forecast.utils import numpy_to_tvar
 from flood_forecast.time_model import PyTorchForecast
-from flood_forecast.model_dict_function import pytorch_opt_dict, pytorch_criterion_dict
+from flood_forecast.model_dict_function import pytorch_opt_dict, pytorch_criterion_dict, Criterion
 from flood_forecast.transformer_xl.transformer_basic import greedy_decode
 from flood_forecast.basic.linear_regression import simple_decode
 from flood_forecast.training_utils import EarlyStopper
@@ -58,7 +58,7 @@ def train_transformer_style(
     :type model_filepath: str, optional
     :raises ValueError: Has an error
     """
-    use_wandb = model.wandb
+    use_wandb: bool = model.wandb
     es = None
     worker_num = 1
     pin_memory = False
@@ -79,7 +79,7 @@ def train_transformer_style(
     criterion_init_params = {}
     if "criterion_params" in training_params:
         criterion_init_params = training_params["criterion_params"]
-    criterion = pytorch_criterion_dict[training_params["criterion"]](**criterion_init_params)
+    criterion: Criterion = pytorch_criterion_dict[training_params["criterion"]](**criterion_init_params)
     if "probabilistic" in model.params["model_params"] or "probabilistic" in model.params:
         probabilistic = True
     else:

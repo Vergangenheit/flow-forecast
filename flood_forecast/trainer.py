@@ -7,7 +7,7 @@ import wandb
 import pandas as pd
 from pandas import DataFrame, Series
 from flood_forecast.pytorch_training import train_transformer_style
-from flood_forecast.da_rnn.custom_types import DaRnnNet
+from flood_forecast.da_rnn.custom_types import DaRnnNet, TrainData
 from flood_forecast.time_model import PyTorchForecast
 from flood_forecast.evaluator import evaluate_model
 from flood_forecast.time_model import scaling_function
@@ -28,7 +28,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
     if model_type == "da_rnn":
         from flood_forecast.da_rnn.train_da import da_rnn, train
         from flood_forecast.preprocessing.preprocess_da_rnn import make_data
-        preprocessed_data = make_data(
+        preprocessed_data: TrainData = make_data(
             params["dataset_params"]["training_path"],
             params["dataset_params"]["target_col"],
             params["dataset_params"]["forecast_length"])
@@ -37,7 +37,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
         trained_model: DaRnnNet = train(model, preprocessed_data, config)
     elif model_type == "PyTorch":
         dataset_params["batch_size"] = params["training_params"]["batch_size"]
-        trained_model = PyTorchForecast(
+        trained_model: PyTorchForecast = PyTorchForecast(
             params["model_name"],
             dataset_params["training_path"],
             dataset_params["validation_path"],
