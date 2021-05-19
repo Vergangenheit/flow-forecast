@@ -4,6 +4,7 @@ from numpy import ndarray
 import pandas as pd
 from pandas import DataFrame, Series
 import torch
+from torch import Tensor
 from typing import List, Union, Optional, TypeVar, NewType, Dict
 from flood_forecast.pre_dict import interpolate_dict, Scaler
 from flood_forecast.preprocessing.buil_dataset import get_data
@@ -103,19 +104,19 @@ class CSVDataLoader(Dataset):
         self.df.to_csv("temp_df.csv")
         self.no_scale = no_scale
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx) -> (Tensor, Tensor):
         rows: DataFrame = self.df.iloc[idx: self.forecast_history + idx]
-        targs_idx_start = self.forecast_history + idx
+        targs_idx_start: int = self.forecast_history + idx
         if self.no_scale:
-            targ_rows = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
+            targ_rows: DataFrame = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
         else:
-            targ_rows = self.df.iloc[
+            targ_rows: DataFrame = self.df.iloc[
                         targs_idx_start: self.forecast_length + targs_idx_start
                         ]
-        src_data = rows.to_numpy()
-        src_data = torch.from_numpy(src_data).float()
-        trg_dat = targ_rows.to_numpy()
-        trg_dat = torch.from_numpy(trg_dat).float()
+        src_data: ndarray = rows.to_numpy()
+        src_data: Tensor = torch.from_numpy(src_data).float()
+        trg_dat: ndarray = targ_rows.to_numpy()
+        trg_dat: Tensor = torch.from_numpy(trg_dat).float()
         return src_data, trg_dat
 
     def __len__(self) -> int:
