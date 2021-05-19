@@ -150,12 +150,12 @@ def main():
     # with open(args.params) as f:
     #     training_config = json.load(f)
     # train_function(training_config["model_type"], training_config)
-    file_path: str = 'data/wind_train.csv'
+    file_path: str = '../data/wind_train.csv'
     full_len: int = len(pd.read_csv(file_path))
     train_function("PyTorch", make_config_file(file_path, full_len))
     # evaluate_model(trained_model)
     print("Process is now complete.")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
