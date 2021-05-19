@@ -115,6 +115,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
             pd.options.plotting.backend = "plotly"
             t = params["dataset_params"]["target_col"][0]
             test_plot = df_train_and_test[[t, "preds"]].plot()
+            test_plot.show()
             wandb.log({"test_plot_" + t: test_plot})
         print("Now plotting final plots")
         test_plot_all = go.Figure()
@@ -124,6 +125,10 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
                     x=df_train_and_test.index,
                     y=df_train_and_test[relevant_col],
                     name=relevant_col))
+        test_plot_all.update_layout(width=1000, height=500, title="Placeholder",
+                          title_x=0.5, xaxis_title="time", yaxis_title='',
+                          legend_title="Legend")
+        test_plot_all.show()
         wandb.log({"test_plot_all": test_plot_all})
     else:
         raise Exception("Please supply valid model type for forecasting")
