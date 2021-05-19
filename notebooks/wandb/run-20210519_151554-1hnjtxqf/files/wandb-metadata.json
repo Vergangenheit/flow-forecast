@@ -1,0 +1,26 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.7.9",
+    "heartbeatAt": "2021-05-19T13:15:56.336642",
+    "startedAt": "2021-05-19T13:15:54.878304",
+    "docker": null,
+    "gpu": "GeForce RTX 2070 with Max-Q Design",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "-f",
+        "C:\\Users\\Lorenzo\\AppData\\Roaming\\jupyter\\runtime\\kernel-44e70033-39ca-4bdf-994f-484645953a15.json"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/Vergangenheit/flow-forecast.git",
+        "commit": "d0a55ec39af68f4002fe44760d78d504389fecbc"
+    },
+    "email": "lorenzo.ostano@gmail.com",
+    "root": "C:/Users/Lorenzo/PycharmProjects/flow-forecast",
+    "host": "MSI",
+    "username": "Lorenzo",
+    "executable": "C:\\Users\\Lorenzo\\PycharmProjects\\flow-forecast\\venv\\Scripts\\python.exe"
+}

@@ -199,6 +199,7 @@ class PyTorchForecast(TimeSeriesModel):
                 dataset_params["forecast_test_len"],
                 dataset_params["target_col"],
                 dataset_params["relevant_cols"],
+                loader_type,
                 **start_end_params)
         elif the_class == "default":
             loader = CSVDataLoader(
@@ -207,6 +208,7 @@ class PyTorchForecast(TimeSeriesModel):
                 dataset_params["forecast_length"],
                 dataset_params["target_col"],
                 dataset_params["relevant_cols"],
+                loader_type,
                 **start_end_params)
         elif the_class == "AutoEncoder":
             loader = AEDataloader(

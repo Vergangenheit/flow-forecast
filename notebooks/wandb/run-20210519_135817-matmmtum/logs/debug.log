@@ -1,0 +1,74 @@
+2021-05-19 13:58:17,953 INFO    MainThread:19664 [wandb_setup.py:_flush():69] setting env: {}
+2021-05-19 13:58:17,953 INFO    MainThread:19664 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-05-19 13:58:17,954 INFO    MainThread:19664 [wandb_init.py:_log_setup():336] Logging user logs to C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210519_135817-matmmtum\logs\debug.log
+2021-05-19 13:58:17,955 INFO    MainThread:19664 [wandb_init.py:_log_setup():337] Logging internal logs to C:\Users\Lorenzo\PycharmProjects\flow-forecast\notebooks\wandb\run-20210519_135817-matmmtum\logs\debug-internal.log
+2021-05-19 13:58:17,957 INFO    MainThread:19664 [wandb_init.py:_jupyter_setup():287] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x0000018C9A04F588>
+2021-05-19 13:58:17,958 INFO    MainThread:19664 [wandb_init.py:init():369] calling init triggers
+2021-05-19 13:58:17,959 INFO    MainThread:19664 [wandb_init.py:init():376] wandb.init called with sweep_config: {}
+config: {}
+2021-05-19 13:58:17,959 INFO    MainThread:19664 [wandb_init.py:init():418] starting backend
+2021-05-19 13:58:17,959 INFO    MainThread:19664 [backend.py:_multiprocessing_setup():71] multiprocessing start_methods=spawn, using: spawn
+2021-05-19 13:58:17,965 INFO    MainThread:19664 [backend.py:ensure_launched():123] starting backend process...
+2021-05-19 13:58:18,078 INFO    MainThread:19664 [backend.py:ensure_launched():128] started backend process with pid: 20404
+2021-05-19 13:58:18,078 INFO    MainThread:19664 [wandb_init.py:init():423] backend started and connected
+2021-05-19 13:58:18,078 INFO    MainThread:19664 [wandb_init.py:init():465] updated telemetry
+2021-05-19 13:58:18,078 INFO    MainThread:19664 [wandb_init.py:init():484] communicating current version
+2021-05-19 13:58:19,005 INFO    MainThread:19664 [wandb_init.py:init():489] got version response upgrade_message: "wandb version 0.10.30 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2021-05-19 13:58:19,005 INFO    MainThread:19664 [wandb_init.py:init():497] communicating run to backend with 30 second timeout
+2021-05-19 13:58:19,401 INFO    MainThread:19664 [wandb_init.py:init():522] starting run threads in backend
+2021-05-19 13:58:19,589 INFO    MainThread:19664 [wandb_run.py:_console_start():1524] atexit reg
+2021-05-19 13:58:19,590 INFO    MainThread:19664 [wandb_run.py:_redirect():1371] redirect: SettingsConsole.WRAP
+2021-05-19 13:58:19,590 INFO    MainThread:19664 [wandb_run.py:_redirect():1414] Wrapping output streams.
+2021-05-19 13:58:19,590 INFO    MainThread:19664 [wandb_run.py:_redirect():1438] Redirects installed.
+2021-05-19 13:58:19,590 INFO    MainThread:19664 [wandb_init.py:init():546] run started, returning control to user process
+2021-05-19 13:58:19,590 INFO    MainThread:19664 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-19 13:58:19,590 INFO    MainThread:19664 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-19 13:58:19,602 INFO    MainThread:19664 [wandb_init.py:_resume_backend():258] resuming backend
+2021-05-19 13:58:22,004 INFO    MainThread:19664 [wandb_watch.py:watch():39] Watching
+2021-05-19 14:05:03,491 INFO    MainThread:19664 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-19 14:05:03,491 INFO    MainThread:19664 [jupyter.py:save_ipynb():265] not saving jupyter notebook
+2021-05-19 14:06:37,728 INFO    MainThread:19664 [wandb_run.py:_atexit_cleanup():1494] got exitcode: 0
+2021-05-19 14:06:37,730 INFO    MainThread:19664 [wandb_run.py:_restore():1466] restore
+2021-05-19 14:06:37,994 INFO    MainThread:19664 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 7217
+  total_bytes: 7217
+}
+
+2021-05-19 14:06:39,025 INFO    MainThread:19664 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 7217
+  total_bytes: 149440
+}
+
+2021-05-19 14:06:40,832 INFO    MainThread:19664 [wandb_run.py:_wait_for_finish():1616] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 149440
+  total_bytes: 149440
+}
+
+2021-05-19 14:06:40,946 INFO    MainThread:19664 [wandb_run.py:_wait_for_finish():1616] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 149440
+  total_bytes: 149440
+}
+
+2021-05-19 14:06:42,054 INFO    MainThread:19664 [wandb_run.py:_show_summary():1771] rendering summary
+2021-05-19 14:06:42,056 INFO    MainThread:19664 [wandb_run.py:_show_history():1809] rendering history
+2021-05-19 14:06:42,057 INFO    MainThread:19664 [wandb_run.py:_show_files():1838] logging synced files

@@ -1,4 +1,5 @@
 import torch
+from torch import Tensor
 from typing import Type
 
 
@@ -55,9 +56,9 @@ def handle_no_scaling(scaler: torch.utils.data.Dataset, out: torch.Tensor, multi
 
 
 def simple_decode(model: Type[torch.nn.Module],
-                  src: torch.Tensor,
+                  src: Tensor,
                   max_seq_len: int,
-                  real_target: torch.Tensor,
+                  real_target: Tensor,
                   start_symbol=None,
                   output_len=1,
                   device='cpu',
@@ -66,7 +67,7 @@ def simple_decode(model: Type[torch.nn.Module],
                   multi_targets=1,
                   use_real_target: bool = True,
                   probabilistic: bool = False,
-                  scaler=None) -> torch.Tensor:
+                  scaler=None) -> Tensor:
     """
     :model a PyTorch model to be used for decoding
     :src the source tensor

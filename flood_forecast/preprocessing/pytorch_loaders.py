@@ -20,6 +20,7 @@ class CSVDataLoader(Dataset):
             forecast_length: int,
             target_col: List,
             relevant_cols: List,
+            loader_type: str,
             scaling: Scaler =None,
             start_stamp: int = 0,
             end_stamp: int = None,
@@ -104,16 +105,25 @@ class CSVDataLoader(Dataset):
         print("target columns are ", self.targ_col)
         self.df.to_csv("temp_df.csv")
         self.no_scale = no_scale
+        self.loader_type = loader_type
 
     def __getitem__(self, idx) -> (Tensor, Tensor):
         rows: DataFrame = self.df.iloc[idx: self.forecast_history + idx]
         targs_idx_start: int = self.forecast_history + idx
-        if self.no_scale:
-            targ_rows: DataFrame = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start][self.targ_col]
+        if self.loader_type == "test":
+            if self.no_scale:
+                targ_rows = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
+            else:
+                targ_rows = self.df.iloc[
+                            targs_idx_start: self.forecast_length + targs_idx_start
+                            ]
         else:
-            targ_rows: DataFrame = self.df.iloc[
-                        targs_idx_start: self.forecast_length + targs_idx_start
-                        ][self.targ_col]
+            if self.no_scale:
+                targ_rows: DataFrame = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start][self.targ_col]
+            else:
+                targ_rows: DataFrame = self.df.iloc[
+                            targs_idx_start: self.forecast_length + targs_idx_start
+                            ][self.targ_col]
         src_data: ndarray = rows.to_numpy()
         src_data: Tensor = torch.from_numpy(src_data).float()
         trg_dat: ndarray = targ_rows.to_numpy()
@@ -172,9 +182,11 @@ class CSVTestLoader(CSVDataLoader):
         """
         if "file_path" not in kwargs:
             kwargs["file_path"] = df_path
+        if "loader_type" not in kwargs:
+            kwargs["loader_type"] = "test"
         super().__init__(**kwargs)
-        df_path = get_data(df_path)
-        self.original_df = pd.read_csv(df_path)
+        df_path: str = get_data(df_path)
+        self.original_df: DataFrame = pd.read_csv(df_path)
         if interpolate:
             self.original_df = interpolate_dict[interpolate["method"]](self.original_df, **interpolate["params"])
         if sort_column_clone:

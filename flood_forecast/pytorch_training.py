@@ -44,7 +44,6 @@ def train_transformer_style(
         takes_target=False,
         forward_params: Dict = {},
         model_filepath: str = "model_save") -> None:
-
     """Function to train any PyTorchForecast model
 
     :param model:  A properly wrapped PyTorchForecast model
@@ -141,6 +140,7 @@ def train_transformer_style(
             multi_targets=num_targets)
         print("The loss for epoch " + str(epoch))
         print(total_loss)
+
         valid = compute_validation(
             validation_data_loader,
             model.model,
@@ -170,6 +170,7 @@ def train_transformer_style(
     decoder_structure = True
     if model.params["dataset_params"]["class"] == "AutoEncoder":
         decoder_structure = False
+
     test = compute_validation(
         test_data_loader,
         model.model,
@@ -219,7 +220,8 @@ def handle_scaling(validation_dataset, src, output: torch.Tensor, labels, probab
     return src, output, labels, output_dist
 
 
-def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset, probabilistic=None, output_std=None, m=1) -> Union[Tensor, float, Criterion]:
+def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset,
+                 probabilistic=None, output_std=None, m=1) -> Union[Tensor, float, Criterion]:
     """Function for computing the loss
 
     :param labels: The real values for the target. Shape can be variable but should follow (batch_size, time)
@@ -306,7 +308,8 @@ def torch_single_train(model: PyTorchForecast,
             forward_params["meta_data"] = representation
             if meta_loss:
                 output: Model = meta_data_model.model(meta_data_model_representation)
-                met_loss: Tensor = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss, None)
+                met_loss: Tensor = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss,
+                                                None)
                 met_loss.backward()
         if takes_target:
             forward_params["t"] = trg
@@ -358,7 +361,7 @@ def multi_step_forecasts_append(self):
 
 
 def compute_validation(validation_loader: DataLoader,
-                       model,
+                       model: Model,
                        epoch: int,
                        sequence_size: int,
                        criterion: Type[torch.nn.modules.loss._Loss],
@@ -427,9 +430,9 @@ def compute_validation(validation_loader: DataLoader,
                         targ.shape[1],
                         targ_clone,
                         device=device)[
-                        :,
-                        :,
-                        0]
+                             :,
+                             :,
+                             0]
                 elif type(model).__name__ == "Informer":
                     multi_targets = multi_targs1
                     filled_targ = targ[1].clone()
@@ -441,14 +444,14 @@ def compute_validation(validation_loader: DataLoader,
                     assert output.shape[1] != 0
                     assert labels.shape[1] != 0
                 else:
-                    output = simple_decode(model=model,
-                                           src=src,
-                                           max_seq_len=targ.shape[1],
-                                           real_target=targ,
-                                           output_len=sequence_size,
-                                           multi_targets=multi_targets,
-                                           probabilistic=probabilistic,
-                                           scaler=scaler)
+                    output: Tensor = simple_decode(model=model,
+                                                   src=src,
+                                                   max_seq_len=targ.shape[1],
+                                                   real_target=targ,
+                                                   output_len=sequence_size,
+                                                   multi_targets=multi_targets,
+                                                   probabilistic=probabilistic,
+                                                   scaler=scaler)
                     if probabilistic:
                         output, output_std = output[0], output[1]
                         output, output_std = output[:, :, 0], output_std[0]
