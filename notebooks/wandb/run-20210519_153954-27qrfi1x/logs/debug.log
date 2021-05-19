@@ -26,3 +26,7 @@ config: {}
 2021-05-19 15:39:56,242 INFO    MainThread:7696 [jupyter.py:save_ipynb():265] not saving jupyter notebook
 2021-05-19 15:39:56,249 INFO    MainThread:7696 [wandb_init.py:_resume_backend():258] resuming backend
 2021-05-19 15:39:58,698 INFO    MainThread:7696 [wandb_watch.py:watch():39] Watching
+2021-05-19 15:43:13,838 INFO    MainThread:7696 [wandb_config.py:__setitem__():141] config set save_path = model_save\19_May_202103_43PM_model.pth - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x000001B046E6CD88>>
+2021-05-19 15:43:13,838 INFO    MainThread:7696 [wandb_run.py:_config_callback():749] config_cb save_path model_save\19_May_202103_43PM_model.pth None
+2021-05-19 15:43:31,162 INFO    MainThread:7696 [wandb_init.py:_pause_backend():249] pausing backend
+2021-05-19 15:43:31,163 INFO    MainThread:7696 [jupyter.py:save_ipynb():265] not saving jupyter notebook
