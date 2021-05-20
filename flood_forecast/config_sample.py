@@ -1,6 +1,8 @@
 # Config file for WanDB sweeps
 from typing import Dict
 
+"""example of a config dictionary for EU wind dataset where I'm trying to forecast the wind energy for Austria"""
+
 
 def make_config_file(file_path: str, df_len: int) -> Dict:
     train_number: float = df_len * .7
