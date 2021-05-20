@@ -10,7 +10,7 @@ def make_config_file(file_path: str, df_len: int) -> Dict:
     config_default = {
         "model_name": "DecoderTransformer",
         "model_type": "PyTorch",
-        "takes_target": False,
+        "takes_target": False, # this param appears to mean that the model forward pass takes in the target (not suited for DecoderTransformer")
         "model_params": {
             "n_time_series": 30,
             "n_head": 8,

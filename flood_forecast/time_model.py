@@ -114,6 +114,7 @@ class PyTorchForecast(TimeSeriesModel):
     def load_model(self, model_base: str, model_params: Dict, weight_path: str = None, strict=True) -> Model:
         if model_base in pytorch_model_dict:
             model = pytorch_model_dict[model_base](**model_params)
+            print("Using model ", type(model))
             if weight_path:
                 checkpoint = torch.load(weight_path, map_location=self.device)
                 if "weight_path_add" in self.params:
