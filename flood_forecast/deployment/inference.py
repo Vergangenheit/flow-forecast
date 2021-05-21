@@ -5,13 +5,18 @@ from flood_forecast.explain_model_output import deep_explain_model_heatmap, deep
 from flood_forecast.time_model import scaling_function
 # from flood_forecast.preprocessing.buil_dataset import get_data
 from flood_forecast.gcp_integration.basic_utils import upload_file
+from flood_forecast.preprocessing.pytorch_loaders import CSVTestLoader
 from datetime import datetime
 import wandb
+from typing import Dict, List
 import torch
+from torch import Tensor
+from pandas import DataFrame
+import numpy as np
 
 
 class InferenceMode(object):
-    def __init__(self, forecast_steps: int, num_prediction_samples: int, model_params, csv_path: str, weight_path,
+    def __init__(self, forecast_steps: int, num_prediction_samples: int, model_params: Dict, csv_path: str, weight_path: str,
                  wandb_proj: str = None, torch_script=False):
         """Class to handle inference for models,
 
@@ -32,20 +37,20 @@ class InferenceMode(object):
         self.csv_path = csv_path
         self.n_targets = model_params.get("n_targets")
         self.targ_cols = model_params["dataset_params"]["target_col"]
-        self.model = load_model(model_params.copy(), csv_path, weight_path)
+        self.model: PyTorchForecast = load_model(model_params.copy(), csv_path, weight_path)
         self.inference_params = model_params["inference_params"]
         if "scaling" in self.inference_params["dataset_params"]:
-            s = scaling_function({}, self.inference_params["dataset_params"])["scaling"]
+            s: Dict = scaling_function({}, self.inference_params["dataset_params"])["scaling"]
             self.inference_params["dataset_params"]["scaling"] = s
         self.inference_params["hours_to_forecast"] = forecast_steps
         self.inference_params["num_prediction_samples"] = num_prediction_samples
         if wandb_proj:
-            date = datetime.now()
+            date: datetime = datetime.now()
             wandb.init(name=date.strftime("%H-%M-%D-%Y") + "_prod", project=wandb_proj)
             wandb.config.update(model_params, allow_val_change=True)
 
-    def infer_now(self, some_date: datetime, csv_path=None, save_buck=None, save_name=None, use_torch_script=False):
-        """Performs inference on a CSV file at a specified datatime
+    def infer_now(self, some_date: datetime, csv_path: str = None, save_buck: str = None, save_name: str = None, use_torch_script: bool = False) -> (DataFrame, Tensor, int, np.int64, CSVTestLoader, List):
+        """Performs inference on a CSV file at a specified datetime
 
         :param some_date: The date you want inference to begin on.
         :param csv_path: A path to a CSV you want to perform inference on, defaults to None

@@ -1,17 +1,20 @@
 import torch
 import torch.optim as optim
 from torch import Tensor
-from typing import Type, Dict, Union
-from torch.utils.data import DataLoader
+from typing import Type, Dict, Union, Optional
+from torch.utils.data import DataLoader, Dataset
+from torch.distributions import Normal
 import json
 import wandb
 from flood_forecast.utils import numpy_to_tvar
 from flood_forecast.time_model import PyTorchForecast
 from flood_forecast.model_dict_function import pytorch_opt_dict, pytorch_criterion_dict, Criterion, Optimizer, Model
+from flood_forecast.preprocessing.pytorch_loaders import Loader
 from flood_forecast.transformer_xl.transformer_basic import greedy_decode
 from flood_forecast.basic.linear_regression import simple_decode
 from flood_forecast.training_utils import EarlyStopper
 from flood_forecast.custom.custom_opt import GaussianLoss, MASELoss
+from numpy import ndarray
 
 
 def handle_meta_data(model: PyTorchForecast):
@@ -44,7 +47,6 @@ def train_transformer_style(
         takes_target=False,
         forward_params: Dict = {},
         model_filepath: str = "model_save") -> None:
-
     """Function to train any PyTorchForecast model
 
     :param model:  A properly wrapped PyTorchForecast model
@@ -141,7 +143,7 @@ def train_transformer_style(
             multi_targets=num_targets)
         print("The loss for epoch " + str(epoch))
         print(total_loss)
-        valid = compute_validation(
+        valid: float = compute_validation(
             validation_data_loader,
             model.model,
             epoch,
@@ -192,34 +194,37 @@ def get_meta_representation(column_id: str, uuid: str, meta_model: PyTorchForeca
     return meta_model.test_data.__getitem__(0, uuid, column_id)[0]
 
 
-def handle_scaling(validation_dataset, src, output: torch.Tensor, labels, probabilistic, m, output_std):
+def handle_scaling(validation_dataset: Loader, src: Tensor, output: torch.Tensor, labels: Tensor, probabilistic, m,
+                   output_std: ndarray) -> (Tensor, Tensor, Tensor, Optional[Normal]):
     # To-do move to class fun ction
     output_dist = None
     if probabilistic:
         unscaled_out = validation_dataset.inverse_scale(output)
         try:
-            output_std = numpy_to_tvar(output_std)
+            output_std: Tensor = numpy_to_tvar(output_std)
         except Exception:
             pass
         output_dist = torch.distributions.Normal(unscaled_out, output_std)
     elif m > 1:
-        output = validation_dataset.inverse_scale(output.cpu())
-        labels = validation_dataset.inverse_scale(labels.cpu())
+        output: Tensor = validation_dataset.inverse_scale(output.cpu())
+        labels: Tensor = validation_dataset.inverse_scale(labels.cpu())
     elif len(output.shape) == 3:
-        output = output.cpu().numpy().transpose(0, 2, 1)
-        labels = labels.cpu().numpy().transpose(0, 2, 1)
-        output = validation_dataset.inverse_scale(torch.from_numpy(output))
-        labels = validation_dataset.inverse_scale(torch.from_numpy(labels))
-        stuff = src.cpu().numpy().transpose(0, 2, 1)
-        src = validation_dataset.inverse_scale(torch.from_numpy(stuff))
+        output: Tensor = output.cpu().numpy().transpose(0, 2, 1)
+        labels: Tensor = labels.cpu().numpy().transpose(0, 2, 1)
+        output: Tensor = validation_dataset.inverse_scale(torch.from_numpy(output))
+        labels: Tensor = validation_dataset.inverse_scale(torch.from_numpy(labels))
+        stuff: Tensor = src.cpu().numpy().transpose(0, 2, 1)
+        src: Tensor = validation_dataset.inverse_scale(torch.from_numpy(stuff))
     else:
-        output = validation_dataset.inverse_scale(output.cpu().transpose(1, 0))
-        labels = validation_dataset.inverse_scale(labels.cpu().transpose(1, 0))
-        src = validation_dataset.inverse_scale(src.cpu().transpose(1, 0))
+        print("Output size before scaling is ", output.size())
+        output: Tensor = validation_dataset.inverse_scale(output.cpu().transpose(1, 0))
+        labels: Tensor = validation_dataset.inverse_scale(labels.cpu().transpose(1, 0))
+        src: Tensor = validation_dataset.inverse_scale(src.cpu().transpose(1, 0))
     return src, output, labels, output_dist
 
 
-def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset, probabilistic=None, output_std=None, m=1) -> Union[float, Criterion]:
+def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criterion, validation_dataset: Loader,
+                 probabilistic=None, output_std=None, m=1) -> Union[float, Criterion]:
     """Function for computing the loss
 
     :param labels: The real values for the target. Shape can be variable but should follow (batch_size, time)
@@ -304,7 +309,8 @@ def torch_single_train(model: PyTorchForecast,
             forward_params["meta_data"] = representation
             if meta_loss:
                 output: Model = meta_data_model.model(meta_data_model_representation)
-                met_loss: Criterion = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2), meta_loss, None)
+                met_loss: Criterion = compute_loss(meta_data_model_representation, output, torch.rand(2, 3, 2),
+                                                   meta_loss, None)
                 met_loss.backward()
         if takes_target:
             forward_params["t"] = trg
@@ -355,7 +361,7 @@ def multi_step_forecasts_append(self):
 
 
 def compute_validation(validation_loader: DataLoader,
-                       model,
+                       model: Model,
                        epoch: int,
                        sequence_size: int,
                        criterion: Type[torch.nn.modules.loss._Loss],
@@ -406,7 +412,7 @@ def compute_validation(validation_loader: DataLoader,
     multi_targs1 = multi_targets
     scaler = None
     if validation_loader.dataset.no_scale:
-        scaler = validation_loader.dataset
+        scaler: Loader = validation_loader.dataset
     with torch.no_grad():
         i = 0
         loss_unscaled_full = 0.0
@@ -424,9 +430,9 @@ def compute_validation(validation_loader: DataLoader,
                         targ.shape[1],
                         targ_clone,
                         device=device)[
-                        :,
-                        :,
-                        0]
+                             :,
+                             :,
+                             0]
                 elif type(model).__name__ == "Informer":
                     multi_targets = multi_targs1
                     filled_targ = targ[1].clone()
@@ -463,17 +469,18 @@ def compute_validation(validation_loader: DataLoader,
                 labels = targ[:, :, 0]
             elif multi_targets > 1:
                 labels = targ[:, :, 0:multi_targets]
-            validation_dataset = validation_loader.dataset
+            validation_dataset: Loader = validation_loader.dataset
             for crit in criterion:
                 if validation_dataset.scale:
                     # Should this also do loss.item() stuff?
                     if len(src.shape) == 2:
                         src = src.unsqueeze(0)
                     src1 = src[:, :, 0:multi_targets]
-                    loss_unscaled_full = compute_loss(labels, output, src1, crit, validation_dataset,
-                                                      probabilistic, output_std, m=multi_targets)
+                    loss_unscaled_full: Tensor = compute_loss(labels, output, src1, crit, validation_dataset,
+                                                              probabilistic, output_std, m=multi_targets)
                     unscaled_crit[crit] += loss_unscaled_full.item() * len(labels.float())
-                loss = compute_loss(labels, output, src, crit, False, probabilistic, output_std, m=multi_targets)
+                loss: Tensor = compute_loss(labels, output, src, crit, False, probabilistic, output_std,
+                                            m=multi_targets)
                 scaled_crit[crit] += loss.item() * len(labels.float())
     if use_wandb:
         if loss_unscaled_full:

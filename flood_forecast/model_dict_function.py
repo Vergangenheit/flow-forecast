@@ -16,7 +16,7 @@ from flood_forecast.custom.custom_opt import (RMSELoss, MAPELoss, PenalizedMSELo
 from flood_forecast.transformer_xl.transformer_bottleneck import DecoderTransformer
 from flood_forecast.custom.dilate_loss import DilateLoss
 from flood_forecast.meta_models.basic_ae import AE
-from typing import TypeVar
+from typing import TypeVar, Dict, Callable
 
 """
 Utility dictionaries to map a string to a class .
@@ -48,10 +48,11 @@ pytorch_criterion_dict = {
     "PenalizedMSELoss": PenalizedMSELoss,
     "NegativeLogLikelihood": NegativeLogLikelihood}
 
-decoding_functions = {"greedy_decode": greedy_decode, "simple_decode": simple_decode}
-
-pytorch_opt_dict = {"Adam": Adam, "SGD": SGD, "BertAdam": BertAdam}
-
 Model = TypeVar("Generic model", MultiAttnHeadSimple, SimpleTransformer, TransformerXL, DummyTorchModel, LSTMForecast, SimpleLinearModel, CustomTransformerDecoder, DARNN, DecoderTransformer, AE, Informer)
 Criterion = TypeVar("loss functions generic type", GaussianLoss, MASELoss, MSELoss, SmoothL1Loss, PoissonNLLLoss, RMSELoss, MAPELoss, DilateLoss, L1Loss, PenalizedMSELoss, NegativeLogLikelihood)
 Optimizer = TypeVar("generic optimizer", Adam, SGD, BertAdam)
+
+decoding_functions: Dict[str, Callable] = {"greedy_decode": greedy_decode, "simple_decode": simple_decode}
+
+pytorch_opt_dict: Dict[str, Optimizer] = {"Adam": Adam, "SGD": SGD, "BertAdam": BertAdam}
+

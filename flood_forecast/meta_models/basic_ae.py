@@ -25,7 +25,7 @@ class AE(nn.Module):
             in_features=out_features, out_features=input_shape
         )
 
-    def forward(self, features: torch.Tensor):
+    def forward(self, features: Tensor) -> Tensor:
         """Runs the full forward pass on the model. In practice
         this will only be done during training.
 
@@ -40,9 +40,9 @@ class AE(nn.Module):
             result = auto_model(x)
             print(result.shape) # (2, 10)
         """
-        activation = self.encoder_hidden_layer(features)
+        activation: Tensor = self.encoder_hidden_layer(features)
         activation = torch.relu(activation)
-        code = self.encoder_output_layer(activation)
+        code: Tensor = self.encoder_output_layer(activation)
         code = torch.relu(code)
         activation = self.decoder_hidden_layer(code)
         activation = torch.relu(activation)

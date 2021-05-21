@@ -1,10 +1,11 @@
 import math
 import torch
+from torch import Tensor
 from torch.optim import Optimizer
 from torch.optim.optimizer import required
 from torch.nn.utils import clip_grad_norm_
 import logging
-from typing import List
+from typing import List, Union
 
 import torch.distributions as tdist
 
@@ -88,12 +89,12 @@ class RMSELoss(torch.nn.Module):
         self.mse = torch.nn.MSELoss()
         self.variance_penalty = variance_penalty
 
-    def forward(self, output: torch.Tensor, target: torch.Tensor):
+    def forward(self, output: torch.Tensor, target: torch.Tensor) -> Union[float, Tensor]:
         if len(output) > 1:
 
-            diff = torch.sub(target, output)
-            std_dev = torch.std(diff)
-            var_penalty = self.variance_penalty * std_dev
+            diff: Tensor = torch.sub(target, output)
+            std_dev: Tensor = torch.std(diff)
+            var_penalty: float = self.variance_penalty * std_dev
 
             # torch.abs(target - output))
             print('diff', diff)
@@ -159,7 +160,7 @@ class GaussianLoss(torch.nn.Module):
 class QuantileLoss(torch.nn.Module):
     """From https://medium.com/the-artificial-impostor/quantile-regression-part-2-6fdbc26b2629"""
 
-    def __init__(self, quantiles):
+    def __init__(self, quantiles: List):
         super().__init__()
         self.quantiles = quantiles
 

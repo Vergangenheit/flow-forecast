@@ -1,5 +1,5 @@
 import torch
-
+from flood_forecast.model_dict_function import Model
 
 class EarlyStopper(object):
     """EarlyStopping handler can be used to stop the training if no improvement after a given number of events.
@@ -48,7 +48,7 @@ class EarlyStopper(object):
         self.counter = 0
         self.best_score = None
 
-    def check_loss(self, model, validation_loss) -> bool:
+    def check_loss(self, model: Model, validation_loss: float) -> bool:
         score = validation_loss
         if self.best_score is None:
             self.save_model_checkpoint(model)
@@ -68,5 +68,5 @@ class EarlyStopper(object):
         return True
 # s
 
-    def save_model_checkpoint(self, model):
+    def save_model_checkpoint(self, model: Model):
         torch.save(model.state_dict(), "checkpoint.pth")

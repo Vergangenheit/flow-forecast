@@ -122,7 +122,7 @@ class PyTorchForecast(TimeSeriesModel):
                         excluded_layers = self.params["weight_path_add"]["excluded_layers"]
                         for layer in excluded_layers:
                             del checkpoint[layer]
-                        print("sucessfully deleted layers")
+                        print("successfully deleted layers")
                     strict = False
                 model.load_state_dict(checkpoint, strict=strict)
                 print("Weights sucessfully loaded")
