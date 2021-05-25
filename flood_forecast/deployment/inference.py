@@ -73,7 +73,7 @@ class InferenceMode(object):
         df, tensor, history, forecast_start, test, samples = infer_on_torch_model(self.model, **self.inference_params)
         if test.scale and self.n_targets:
             for i in range(0, self.n_targets):
-                unscaled = test.inverse_scale(tensor.numpy())
+                unscaled: Tensor = test.inverse_scale(tensor.numpy())
                 df["pred_" + self.targ_cols[i]] = 0
                 print("Shape of unscaled is: ")
                 print(unscaled.shape)

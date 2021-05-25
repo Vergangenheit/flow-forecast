@@ -20,14 +20,14 @@ class CSVDataLoader(Dataset):
             forecast_length: int,
             target_col: List,
             relevant_cols: List,
-            scaling: Scaler =None,
+            scaling: Scaler = None,
             start_stamp: int = 0,
             end_stamp: int = None,
             gcp_service_key: Optional[str] = None,
             interpolate_param: bool = False,
             sort_column: str = None,
-            scaled_cols: List =None,
-            feature_params: Dict =None,
+            scaled_cols: List = None,
+            feature_params: Dict = None,
             id_series_col=None,
             no_scale=False
 
@@ -111,8 +111,8 @@ class CSVDataLoader(Dataset):
             targ_rows: DataFrame = self.unscaled_df.iloc[targs_idx_start: self.forecast_length + targs_idx_start]
         else:
             targ_rows: DataFrame = self.df.iloc[
-                        targs_idx_start: self.forecast_length + targs_idx_start
-                        ]
+                                   targs_idx_start: self.forecast_length + targs_idx_start
+                                   ]
         src_data: ndarray = rows.to_numpy()
         src_data: Tensor = torch.from_numpy(src_data).float()
         trg_dat: ndarray = targ_rows.to_numpy()
@@ -158,11 +158,11 @@ class CSVTestLoader(CSVDataLoader):
             self,
             df_path: str,
             forecast_total: int,
-            use_real_precip=True,
-            use_real_temp=True,
-            target_supplied=True,
-            interpolate=False,
-            sort_column_clone=None,
+            use_real_precip: bool = True,
+            use_real_temp: bool = True,
+            target_supplied: bool = True,
+            interpolate: bool = False,
+            sort_column_clone: str = None,
             **kwargs
     ):
         """
@@ -193,14 +193,14 @@ class CSVTestLoader(CSVDataLoader):
         if len(self.relevant_cols3) > 0:
             self.original_df[self.relevant_cols3] = self.df[self.relevant_cols3]
 
-    def get_from_start_date(self, forecast_start: datetime):
+    def get_from_start_date(self, forecast_start: datetime) -> (Tensor, DataFrame, int):
         dt_row = self.original_df[
             self.original_df["datetime"] == forecast_start
             ]
         revised_index = dt_row.index[0]
         return self.__getitem__(revised_index - self.forecast_history)
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx) -> (Tensor, DataFrame, int):
         if self.target_supplied:
             historical_rows = self.df.iloc[idx: self.forecast_history + idx]
             target_idx_start = self.forecast_history + idx
@@ -208,10 +208,10 @@ class CSVTestLoader(CSVDataLoader):
             # targ_rows = self.df.iloc[
             #     target_idx_start : self.forecast_total + target_idx_start
             # ]
-            all_rows_orig = self.original_df.iloc[
+            all_rows_orig: DataFrame = self.original_df.iloc[
                             idx: self.forecast_total + target_idx_start
                             ].copy()
-            historical_rows = torch.from_numpy(historical_rows.to_numpy())
+            historical_rows: Tensor = torch.from_numpy(historical_rows.to_numpy())
             return historical_rows.float(), all_rows_orig, target_idx_start
 
     def convert_real_batches(self, the_col: str, rows_to_convert):

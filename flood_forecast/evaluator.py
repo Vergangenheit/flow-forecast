@@ -2,18 +2,20 @@ from datetime import datetime
 from typing import Callable, Dict, List, Tuple, Type, Union
 
 import numpy as np
+from numpy import ndarray
 import pandas as pd
+from pandas import DataFrame
 import sklearn.metrics
 import torch
-
+from torch import Tensor
 from flood_forecast.explain_model_output import (
     deep_explain_model_heatmap,
     deep_explain_model_summary_plot,
 )
 from flood_forecast.model_dict_function import decoding_functions
 from flood_forecast.custom.custom_opt import MASELoss, GaussianLoss
-from flood_forecast.preprocessing.pytorch_loaders import CSVTestLoader, TemporalTestLoader
-from flood_forecast.time_model import TimeSeriesModel
+from flood_forecast.preprocessing.pytorch_loaders import CSVTestLoader, TemporalTestLoader, Loader
+from flood_forecast.time_model import TimeSeriesModel, PyTorchForecast
 from flood_forecast.utils import flatten_list_function
 from flood_forecast.temporal_decoding import decoding_function
 
@@ -191,7 +193,7 @@ def evaluate_model(
 
 
 def infer_on_torch_model(
-    model,
+    model: PyTorchForecast,
     test_csv_path: str = None,
     datetime_start: datetime = datetime(2018, 9, 22, 0),
     hours_to_forecast: int = 336,
@@ -220,15 +222,15 @@ def infer_on_torch_model(
     if "n_targets" in model.params:
         multi_params = model.params["n_targets"]
     print("This model is currently forecasting for : " + str(multi_params) + " targets")
-    history_length = model.params["dataset_params"]["forecast_history"]
-    forecast_length = model.params["dataset_params"]["forecast_length"]
+    history_length: int = model.params["dataset_params"]["forecast_history"]
+    forecast_length: int = model.params["dataset_params"]["forecast_length"]
     sort_column2 = None
     #
     # If the test dataframe is none use default one supplied in params
     if test_csv_path is None:
-        csv_test_loader = model.test_data
+        csv_test_loader: Loader = model.test_data
     elif model.params["dataset_params"]["class"] == "TemporalLoader":
-        input_dict = {
+        input_dict: Dict = {
             "df_path": test_csv_path,
             "forecast_total": hours_to_forecast,
             "kwargs": dataset_params
@@ -236,9 +238,9 @@ def infer_on_torch_model(
         test_idx = None
         if "label_len" in model.params["model_params"]:
             test_idx = model.params["model_params"]["label_len"] - model.params["dataset_params"]["forecast_length"]
-        csv_test_loader = TemporalTestLoader(model.params["dataset_params"]["temporal_feats"], input_dict, test_idx)
+        csv_test_loader: Loader = TemporalTestLoader(model.params["dataset_params"]["temporal_feats"], input_dict, test_idx)
     else:
-        csv_test_loader = CSVTestLoader(
+        csv_test_loader: Loader = CSVTestLoader(
             test_csv_path,
             hours_to_forecast,
             **dataset_params,
@@ -255,7 +257,7 @@ def infer_on_torch_model(
             df_train_and_test,
             forecast_start_idx,
         ) = csv_test_loader.get_from_start_date(datetime_start)
-    end_tensor = generate_predictions(
+    end_tensor: Tensor = generate_predictions(
         model,
         df_train_and_test,
         csv_test_loader,
@@ -285,12 +287,12 @@ def infer_on_torch_model(
     else:
         df_train_and_test.loc[df_train_and_test.index[history_length:], "preds"] = end_tensor.numpy().tolist()
     df_prediction_arr = []
-    df_prediction_samples = pd.DataFrame(index=df_train_and_test.index)
+    df_prediction_samples: DataFrame = pd.DataFrame(index=df_train_and_test.index)
     # df_prediction_samples_std_dev = pd.DataFrame(index=df_train_and_test.index)
     if num_prediction_samples is not None:
         model.model.train()  # sets mode to train so the dropout layers will be touched
         assert num_prediction_samples > 0
-        prediction_samples = generate_prediction_samples(
+        prediction_samples: ndarray = generate_prediction_samples(
             model,
             df_train_and_test,
             csv_test_loader,
@@ -304,13 +306,13 @@ def infer_on_torch_model(
             multi_params=multi_params,
             targs=targ
         )
-        df_prediction_samples = pd.DataFrame(
+        df_prediction_samples: DataFrame = pd.DataFrame(
             index=df_train_and_test.index,
             columns=list(range(num_prediction_samples)),
             dtype="float",
         )
-        num_samples = model.params["inference_params"].get("num_prediction_samples")
-        df_prediction_arr = handle_ci_multi(prediction_samples, csv_test_loader, multi_params,
+        num_samples: int = model.params["inference_params"].get("num_prediction_samples")
+        df_prediction_arr: List[DataFrame] = handle_ci_multi(prediction_samples, csv_test_loader, multi_params,
                                             df_prediction_samples, decoder_params, history_length, num_samples)
     return (
         df_train_and_test,
@@ -323,7 +325,7 @@ def infer_on_torch_model(
     )
 
 
-def handle_ci_multi(prediction_samples: torch.Tensor, csv_test_loader: CSVTestLoader, multi_params: int,
+def handle_ci_multi(prediction_samples: ndarray, csv_test_loader: CSVTestLoader, multi_params: int,
                     df_pred, decoder_param: bool, history_length: int, num_samples: int) -> List[pd.DataFrame]:
     """[summary]
 
@@ -351,8 +353,7 @@ def handle_ci_multi(prediction_samples: torch.Tensor, csv_test_loader: CSVTestLo
         if "probabilistic" in decoder_param:
             prediction_samples = prediction_samples[0]
         if multi_params == 1:
-            print(type(prediction_samples))
-            predict = csv_test_loader.inverse_scale(prediction_samples).numpy()
+            predict: ndarray = csv_test_loader.inverse_scale(prediction_samples).numpy()
             prediction_samples = predict
             df_pred.iloc[history_length:] = prediction_samples
             df_prediction_arr.append(df_pred)

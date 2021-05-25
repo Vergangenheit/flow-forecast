@@ -47,6 +47,7 @@ def gelu(x):
 def swish(x):
     return x * torch.sigmoid(x)
 
+
 ACT_FNS = {
     'relu': nn.ReLU(),
     'swish': swish,
@@ -58,7 +59,7 @@ class Attention(nn.Module):
     def __init__(self, n_head, n_embd, win_len, scale, q_len, sub_len, sparse=None, attn_pdrop=0.1, resid_pdrop=0.1):
         super(Attention, self).__init__()
 
-        if(sparse):
+        if (sparse):
             print('Activate log sparse!')
             mask = self.log_mask(win_len, sub_len)
         else:
@@ -94,17 +95,17 @@ class Attention(nn.Module):
             utilize parallel computing in dense matrices with sparse multiplication."""
         log_l = math.ceil(np.log2(sub_len))
         mask = torch.zeros((win_len), dtype=torch.float)
-        if((win_len // sub_len) * 2 * (log_l) > index):
+        if ((win_len // sub_len) * 2 * (log_l) > index):
             mask[:(index + 1)] = 1
         else:
-            while(index >= 0):
-                if((index - log_l + 1) < 0):
+            while (index >= 0):
+                if ((index - log_l + 1) < 0):
                     mask[:index] = 1
                     break
                 mask[index - log_l + 1:(index + 1)] = 1  # Local attention
                 for i in range(0, log_l):
-                    new_index = index - log_l + 1 - 2**i
-                    if((index - new_index) <= sub_len and new_index >= 0):
+                    new_index = index - log_l + 1 - 2 ** i
+                    if ((index - new_index) <= sub_len and new_index >= 0):
                         mask[new_index] = 1
                 index -= sub_len
         return mask
@@ -225,7 +226,7 @@ class Block(nn.Module):
 class TransformerModel(nn.Module):
     """ Transformer model """
 
-    def __init__(self, n_time_series, n_head, sub_len, num_layer, n_embd,
+    def __init__(self, n_time_series: int, n_head: int, sub_len, num_layer: int, n_embd: int,
                  forecast_history: int, dropout: float, scale_att, q_len, additional_params: Dict, seq_num=None):
         super(TransformerModel, self).__init__()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -271,7 +272,7 @@ class TransformerModel(nn.Module):
 class DecoderTransformer(nn.Module):
     def __init__(self, n_time_series: int, n_head: int, num_layer: int,
                  n_embd: int, forecast_history: int, dropout: float, q_len: int, additional_params: Dict,
-                 activation="Softmax", forecast_length: int = None, scale_att: bool = False, seq_num=None,
+                 activation: int = "Softmax", forecast_length: int = None, scale_att: bool = False, seq_num=None,
                  sub_len=1, mu=None):
         """
         Args:
