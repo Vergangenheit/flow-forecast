@@ -1,7 +1,7 @@
 import torch
 import torch.optim as optim
 from torch import Tensor
-from typing import Type, Dict, Union, Optional
+from typing import Type, Dict, Union, Optional, List
 from torch.utils.data import DataLoader, Dataset
 from torch.distributions import Normal
 import json
@@ -15,6 +15,8 @@ from flood_forecast.basic.linear_regression import simple_decode
 from flood_forecast.training_utils import EarlyStopper
 from flood_forecast.custom.custom_opt import GaussianLoss, MASELoss
 from numpy import ndarray
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 
 
 def handle_meta_data(model: PyTorchForecast):
@@ -46,7 +48,7 @@ def train_transformer_style(
         training_params: Dict,
         takes_target=False,
         forward_params: Dict = {},
-        model_filepath: str = "model_save") -> None:
+        model_filepath: str = "model_save") -> List:
     """Function to train any PyTorchForecast model
 
     :param model:  A properly wrapped PyTorchForecast model
@@ -130,8 +132,11 @@ def train_transformer_style(
     if "use_decoder" in model.params:
         use_decoder = True
     session_params = []
+    train_losses: List = []
+    valid_losses: List = []
     for epoch in range(max_epochs):
-        total_loss = torch_single_train(
+        # TODO catch total loss in a list for plotting at the end of training
+        total_loss: float = torch_single_train(
             model,
             opt,
             criterion,
@@ -141,6 +146,7 @@ def train_transformer_style(
             meta_representation,
             meta_loss,
             multi_targets=num_targets)
+        train_losses.append(total_loss)
         print("The loss for epoch " + str(epoch))
         print(total_loss)
         valid: float = compute_validation(
@@ -155,6 +161,7 @@ def train_transformer_style(
             decoder_structure=use_decoder,
             use_wandb=use_wandb,
             probabilistic=probabilistic)
+        valid_losses.append(valid)
         if valid == 0.0:
             raise ValueError("Error validation loss is zero there is a problem with the validator.")
         if use_wandb:
@@ -172,7 +179,7 @@ def train_transformer_style(
     decoder_structure = True
     if model.params["dataset_params"]["class"] == "AutoEncoder":
         decoder_structure = False
-    test = compute_validation(
+    test: float = compute_validation(
         test_data_loader,
         model.model,
         epoch,
@@ -188,6 +195,8 @@ def train_transformer_style(
     print("test loss:", test)
     model.params["run"] = session_params
     model.save_model(model_filepath, max_epochs)
+
+    return train_losses
 
 
 def get_meta_representation(column_id: str, uuid: str, meta_model: PyTorchForecast) -> torch.Tensor:
@@ -279,6 +288,13 @@ def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criteri
         assert labels.shape[0] == output.shape[0]
         loss: Criterion = criterion(output, labels.float())
     return loss
+
+
+def plot_losses(losses: List, set: str):
+    fig: Figure = plt.figure(figsize=(20, 10))
+    plt.semilogy(range(len(losses)), losses)
+    plt.title(f"{set} losses per epoch")
+    plt.show()
 
 
 def torch_single_train(model: PyTorchForecast,

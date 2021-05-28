@@ -1,12 +1,12 @@
 # flake8: noqa
 import argparse
-from typing import Dict, Union, Tuple
+from typing import Dict, Union, Tuple, List
 import json
 import plotly.graph_objects as go
 import wandb
 import pandas as pd
 from pandas import DataFrame, Series
-from flood_forecast.pytorch_training import train_transformer_style
+from flood_forecast.pytorch_training import train_transformer_style, plot_losses
 from flood_forecast.da_rnn.custom_types import DaRnnNet, TrainData
 from flood_forecast.time_model import PyTorchForecast
 from flood_forecast.evaluator import evaluate_model
@@ -64,7 +64,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
             for param in delete_params:
                 if param in trained_model.params["inference_params"]["dataset_params"]:
                     del trained_model.params["inference_params"]["dataset_params"][param]
-        train_transformer_style(model=trained_model,
+        train_losses: List = train_transformer_style(model=trained_model,
                                 training_params=params["training_params"],
                                 takes_target=takes_target,
                                 forward_params={})
@@ -119,11 +119,11 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
         else:
             pd.options.plotting.backend = "plotly"
             t = params["dataset_params"]["target_col"][0]
-            test_plot = df_train_and_test[[t, "preds"]].plot()
-            test_plot.show()
+            test_plot: Figure = df_train_and_test[[t, "preds"]].plot()
+            # test_plot.show()
             wandb.log({"test_plot_" + t: test_plot})
         print("Now plotting final plots")
-        test_plot_all = go.Figure()
+        test_plot_all: Figure = go.Figure()
         for relevant_col in params["dataset_params"]["relevant_cols"]:
             test_plot_all.add_trace(
                 go.Scatter(
@@ -133,10 +133,12 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
         test_plot_all.update_layout(width=1000, height=500, title="Placeholder",
                                     title_x=0.5, xaxis_title="time", yaxis_title='',
                                     legend_title="Legend")
-        test_plot_all.show()
+        # test_plot_all.show()
         wandb.log({"test_plot_all": test_plot_all})
     else:
         raise Exception("Please supply valid model type for forecasting")
+    # plot losses
+    plot_losses(train_losses, "train")
     return trained_model
 
 
