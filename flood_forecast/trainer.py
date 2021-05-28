@@ -64,7 +64,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
             for param in delete_params:
                 if param in trained_model.params["inference_params"]["dataset_params"]:
                     del trained_model.params["inference_params"]["dataset_params"][param]
-        train_losses: List = train_transformer_style(model=trained_model,
+        train_losses, valid_losses = train_transformer_style(model=trained_model,
                                 training_params=params["training_params"],
                                 takes_target=takes_target,
                                 forward_params={})
@@ -139,6 +139,7 @@ def train_function(model_type: str, params: Dict) -> Union[PyTorchForecast, DaRn
         raise Exception("Please supply valid model type for forecasting")
     # plot losses
     plot_losses(train_losses, "train")
+    plot_losses(valid_losses, "validation")
     return trained_model
 
 

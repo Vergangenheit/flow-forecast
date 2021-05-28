@@ -48,7 +48,7 @@ def train_transformer_style(
         training_params: Dict,
         takes_target=False,
         forward_params: Dict = {},
-        model_filepath: str = "model_save") -> List:
+        model_filepath: str = "model_save") -> (List, List):
     """Function to train any PyTorchForecast model
 
     :param model:  A properly wrapped PyTorchForecast model
@@ -196,7 +196,7 @@ def train_transformer_style(
     model.params["run"] = session_params
     model.save_model(model_filepath, max_epochs)
 
-    return train_losses
+    return train_losses, valid_losses
 
 
 def get_meta_representation(column_id: str, uuid: str, meta_model: PyTorchForecast) -> torch.Tensor:
