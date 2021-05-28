@@ -16,3 +16,4 @@ env
 *.csv
 wandb
 *.pth
+.env
