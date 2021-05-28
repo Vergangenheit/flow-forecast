@@ -110,7 +110,7 @@ def make_config_file_infer(file_path: str, df_len: int) -> Dict:
             "dropout": 0.1,
             "q_len": 1,
             "scale_att": False,
-            "forecast_length": 18,
+            "forecast_length": 30,
             "additional_params": {}
         },
         "dataset_params":
@@ -121,7 +121,7 @@ def make_config_file_infer(file_path: str, df_len: int) -> Dict:
                 "test_path": file_path,
                 "batch_size": 64,
                 "forecast_history": 120,
-                "forecast_length": 18,
+                "forecast_length": 30,
                 "train_end": int(train_number),
                 "valid_start": int(train_number + 1),
                 "valid_end": int(validation_number),
@@ -157,7 +157,7 @@ def make_config_file_infer(file_path: str, df_len: int) -> Dict:
         "inference_params":
             {
                 "datetime_start": "2013-05-01",
-                "hours_to_forecast": 18,
+                "hours_to_forecast": 30,
                 "test_csv_path": file_path,
                 "decoder_params": {
                     "decoder_function": "simple_decode",
@@ -166,7 +166,7 @@ def make_config_file_infer(file_path: str, df_len: int) -> Dict:
                 "dataset_params": {
                     "file_path": file_path,
                     "forecast_history": 120,
-                    "forecast_length": 18,
+                    "forecast_length": 30,
                     "relevant_cols": ['Austria', 'Belgium', 'Bulgaria', 'Switzerland', 'Czechia',
                                       'Germany', 'Denmark', 'Estonia', 'Spain', 'Finland', 'France', 'Greece',
                                       'Croatia', 'Hungary', 'Ireland', 'Italy', 'Lithuania', 'Luxembourg',
