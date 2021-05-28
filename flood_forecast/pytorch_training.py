@@ -216,7 +216,6 @@ def handle_scaling(validation_dataset: Loader, src: Tensor, output: torch.Tensor
         stuff: Tensor = src.cpu().numpy().transpose(0, 2, 1)
         src: Tensor = validation_dataset.inverse_scale(torch.from_numpy(stuff))
     else:
-        print("Output size before scaling is ", output.size())
         output: Tensor = validation_dataset.inverse_scale(output.cpu().transpose(1, 0))
         labels: Tensor = validation_dataset.inverse_scale(labels.cpu().transpose(1, 0))
         src: Tensor = validation_dataset.inverse_scale(src.cpu().transpose(1, 0))

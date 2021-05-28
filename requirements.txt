@@ -23,3 +23,5 @@ sphinx
 sphinx-rtd-theme
 sphinx-autodoc-typehints
 pycountry
+SQLAlchemy==1.4.1
+psycopg2==2.8.6
