@@ -144,11 +144,11 @@ class CSVDataLoader(Dataset):
             result_data_np: ndarray = result_data.numpy()
         if isinstance(result_data, ndarray):
             result_data_np: ndarray = result_data
-            # TODO remove below print
-            print("Result data before inverse scaling is ", result_data_np.shape)
         # print(type(result_data))
         if self.no_scale:
             return torch.from_numpy(result_data_np)
+        # TODO remove below print
+        print("Result data before inverse scaling is ", result_data_np.shape)
         return torch.from_numpy(
             self.targ_scaler.inverse_transform(result_data_np)
         )
