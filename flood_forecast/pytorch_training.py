@@ -253,7 +253,7 @@ def compute_loss(labels: Tensor, output: Tensor, src: Tensor, criterion: Criteri
     :type m: int, optional
     :return: Returns the computed loss
     :rtype: float
-"""
+    """
     if isinstance(criterion, GaussianLoss):
         if len(output[0].shape) > 2:
             g_loss: Criterion = GaussianLoss(output[0][:, :, 0], output[1][:, :, 0])

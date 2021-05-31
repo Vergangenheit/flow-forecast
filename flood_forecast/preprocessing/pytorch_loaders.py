@@ -95,6 +95,8 @@ class CSVDataLoader(Dataset):
             # other present time series values.
             targ_scale_class = self.scale.__class__
             self.targ_scaler = targ_scale_class()
+            # TODO remove below print
+            print("Fitting target scaler on ", [target_col])
             self.df[target_col]: Union[Series, ndarray] = self.targ_scaler.fit_transform(self.df[target_col])
 
             self.df[scaled_cols] = temp_df
