@@ -96,8 +96,6 @@ class CSVDataLoader(Dataset):
             targ_scale_class = self.scale.__class__
             self.targ_scaler = targ_scale_class()
             self.df[target_col]: Union[Series, ndarray] = self.targ_scaler.fit_transform(self.df[target_col])
-            # TODO remove below print
-            print("Scaler shape is ", self.targ_scaler.scale_.shape)
             self.df[scaled_cols] = temp_df
         if (len(self.df) - self.df.count()).max() != 0:
             print("Error nan values detected in data. Please run interpolate ffill or bfill on data")
@@ -146,6 +144,8 @@ class CSVDataLoader(Dataset):
             result_data_np: ndarray = result_data.numpy()
         if isinstance(result_data, ndarray):
             result_data_np: ndarray = result_data
+            # TODO remove below print
+            print("Result data before inverse scaling is ", result_data_np.shape)
         # print(type(result_data))
         if self.no_scale:
             return torch.from_numpy(result_data_np)
