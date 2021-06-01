@@ -217,7 +217,10 @@ def infer_on_torch_model(
     """
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if isinstance(datetime_start, str):
-        datetime_start: datetime = datetime.strptime(datetime_start, "%Y-%m-%d")
+        if len(datetime_start) > 10:
+            datetime_start: datetime = datetime.strptime(datetime_start, "%Y-%m-%d %H:%M:%S")
+        else:
+            datetime_start: datetime = datetime.strptime(datetime_start, "%Y-%m-%d")
     multi_params = 1
     if "n_targets" in model.params:
         multi_params = model.params["n_targets"]
