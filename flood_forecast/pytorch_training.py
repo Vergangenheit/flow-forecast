@@ -353,6 +353,8 @@ def torch_single_train(model: PyTorchForecast,
             output = output.mean
             output_std = output1.stddev
 
+        labels = labels.unsqueeze(2)
+        output = output.unsqueeze(2)
         loss = compute_loss(labels, output, src, criterion, None, probablistic, output_std, m=multi_targets)
         if loss > 100:
             print("Warning: high loss detected")

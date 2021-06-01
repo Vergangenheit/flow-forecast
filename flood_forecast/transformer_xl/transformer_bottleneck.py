@@ -290,8 +290,8 @@ class DecoderTransformer(nn.Module):
         self.transformer = TransformerModel(n_time_series, n_head, sub_len, num_layer, n_embd,
                                             forecast_history, dropout, scale_att, q_len, additional_params)
         self.softplus = nn.Softplus()
-        self.mu = torch.nn.Linear(n_time_series + n_embd, 1, bias=True)
-        self.sigma = torch.nn.Linear(n_time_series + n_embd, 1, bias=True)
+        self.mu = torch.nn.Linear(n_time_series + n_embd, 7, bias=True)
+        self.sigma = torch.nn.Linear(n_time_series + n_embd, 7, bias=True)
         self._initialize_weights()
         self.mu_mode = mu
         self.forecast_len_layer = None
